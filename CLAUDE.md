@@ -31,6 +31,11 @@ All four files share the same brand anchors:
 
 The site is deployed via GitHub Pages. `index.html` is a style-picker landing page shared directly with non-technical stakeholders so they can choose a visual direction. Keep it clear and self-explanatory — no jargon, no instructions required. Stakeholders access it via a public URL; they do not clone the repo.
 
+## Git commits
+
+- Messages must be short (a few words)
+- No reference to Claude, any LLM, or AI tools — write as if a human authored every commit
+
 ## Conventions
 
 - CSS custom properties (`--var`) define the palette at `:root`; edit colors there, not inline
