@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Fenêtre — Glacier artisanal, Port de Morgat, Crozon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F2E8;
+    --paper-warm: #F2EBDD;
+    --ink: #1A1714;
+    --ink-soft: #4A413A;
+    --teal: #0E4F58;
+    --rose: #E8B5B5;
+    --hairline: #D9D2BE;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Spectral', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .display { font-family: 'Cormorant Garamond', serif; }
+  .sc { font-family: 'Cormorant SC', serif; letter-spacing: 0.18em; text-transform: uppercase; }
+
+  a { color: inherit; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 242, 232, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hairline);
+    padding: 18px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  nav .nav-left, nav .nav-right {
+    display: flex;
+    gap: 28px;
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+  }
+  nav .nav-right { justify-content: flex-end; }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--teal); }
+  nav .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: calc(100vh - 60px);
+    min-height: 560px;
+    overflow: hidden;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(1.02) saturate(0.94);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(26, 23, 20, 0.55) 100%);
+    pointer-events: none;
+  }
+  .hero-text {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    right: 60px;
+    color: var(--paper);
+    z-index: 2;
+  }
+  .hero-text .kicker {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.85;
+    margin-bottom: 18px;
+  }
+  .hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 6.5vw, 96px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    max-width: 920px;
+  }
+  .hero-text h1 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* ===== INTRO / MANIFESTO ===== */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .container-wide {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .intro {
+    padding: 120px 0 100px;
+    text-align: center;
+  }
+  .monogram {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 48px;
+    display: block;
+  }
+  .intro p.lede {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .intro p.lede em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .intro .link {
+    display: inline-block;
+    margin-top: 40px;
+    font-family: 'Cormorant SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .intro .link:hover {
+    color: var(--teal);
+    border-color: var(--teal);
+  }
+
+  /* ===== FULL BLEED IMAGE ===== */
+  .full-image {
+    width: 100%;
+    height: 70vh;
+    min-height: 480px;
+    overflow: hidden;
+    margin: 60px 0;
+  }
+  .full-image .bg {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a6470 0%, #0E4F58 50%, #082E35 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 50px;
+  }
+  .full-image .bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 70% 40%, rgba(232, 181, 181, 0.18), transparent 50%),
+      radial-gradient(circle at 30% 80%, rgba(247, 242, 232, 0.1), transparent 60%);
+  }
+  .full-image .legend {
+    position: relative;
+    color: var(--paper);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 24px;
+    z-index: 2;
+    max-width: 480px;
+  }
+  .full-image .legend .sc {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-style: normal;
+    color: var(--paper);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* ===== QUOTE / CITATION ===== */
+  .quote {
+    padding: 140px 0;
+    text-align: center;
+    background: var(--paper-warm);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 96px;
+    line-height: 0.5;
+    color: var(--teal);
+    margin-bottom: 30px;
+    height: 30px;
+  }
+  blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.3;
+    color: var(--ink);
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  blockquote .accent { color: var(--teal); font-weight: 400; }
+  .quote .author {
+    margin-top: 36px;
+    font-family: 'Cormorant SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--ink-soft);
+  }
+  .quote .author em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* ===== PHILOSOPHY ===== */
+  .philosophy {
+    padding: 120px 0;
+    text-align: center;
+  }
+  .section-label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 28px;
+  }
+  .philosophy h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5vw, 68px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  .philosophy h2 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .philosophy p {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 640px;
+    margin: 0 auto 18px;
+  }
+  .philosophy p em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  /* ===== FOUNDER ===== */
+  .founder {
+    padding: 100px 0 140px;
+  }
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .founder-image {
+    aspect-ratio: 4 / 5;
+    background:
+      linear-gradient(160deg, #C9A78F 0%, #B89376 50%, #8C6B52 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .founder-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 35% 35%, rgba(247, 242, 232, 0.18), transparent 60%);
+  }
+  .founder-image .placeholder-tag {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    font-family: 'Cormorant SC', serif;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--paper);
+    opacity: 0.55;
+    z-index: 2;
+  }
+  .founder-text .label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--teal);
+    margin-bottom: 24px;
+  }
+  .founder-text blockquote.testimonial {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
+  }
+  .founder-text blockquote.testimonial::before {
+    content: '« ';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--teal);
+  }
+  .founder-text blockquote.testimonial::after {
+    content: ' »';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--teal);
+  }
+  .founder-text .signature {
+    margin-top: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+  }
+  .founder-text .signature .role {
+    display: block;
+    font-family: 'Cormorant SC', serif;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  /* ===== ESPACES (3 cards) ===== */
+  .spaces {
+    padding: 100px 0 120px;
+    background: var(--paper-warm);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .spaces-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 80px;
+    padding: 0 32px;
+  }
+  .spaces-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.05;
+    margin-bottom: 22px;
+  }
+  .spaces-head p {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .spaces-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .space-card {
+    text-align: center;
+  }
+  .space-card .visual {
+    aspect-ratio: 4 / 5;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .space-card .visual.v1 {
+    background: linear-gradient(160deg, #1a6470, #0E4F58);
+  }
+  .space-card .visual.v2 {
+    background: linear-gradient(135deg, #E8B5B5, #d4a8a8 60%, #C9A78F);
+  }
+  .space-card .visual.v3 {
+    background: linear-gradient(155deg, #E8DCC4, #C9A78F 70%, #8C6B52);
+  }
+  .space-card .visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(247, 242, 232, 0.2), transparent 60%);
+  }
+  .space-card .visual svg {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    z-index: 2;
+  }
+  .space-card .label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .space-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .space-card p {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .space-card .more {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .space-card .more:hover {
+    color: var(--teal);
+    border-color: var(--teal);
+  }
+
+  /* ===== LA CARTE (8 parfums grille) ===== */
+  .menu {
+    padding: 140px 0 120px;
+  }
+  .menu-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 70px;
+    padding: 0 32px;
+  }
+  .menu-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5vw, 64px);
+    margin-bottom: 22px;
+  }
+  .menu-head h2 em { font-style: italic; color: var(--teal); }
+  .menu-head .date {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--teal);
+    margin-bottom: 18px;
+  }
+  .menu-head p {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--hairline);
+    border-left: 1px solid var(--hairline);
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .flavor-card {
+    border-right: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding: 36px 28px 32px;
+    text-align: center;
+    transition: background 0.25s;
+    cursor: pointer;
+  }
+  .flavor-card:hover { background: var(--paper-warm); }
+  .flavor-illust {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 22px;
+  }
+  .flavor-card .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .flavor-card .tag {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    min-height: 40px;
+  }
+  .flavor-card .origin {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--teal);
+  }
+
+  /* ===== ÉVÉNEMENT ===== */
+  .event {
+    padding: 120px 0;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .event-visual {
+    aspect-ratio: 1;
+    background:
+      radial-gradient(circle at 50% 50%, var(--ink) 30%, #2a1f12 31%, #2a1f12 32%, transparent 33%),
+      radial-gradient(circle at 50% 50%, transparent 0%, transparent 35%, rgba(232, 181, 181, 0.1) 36%, rgba(232, 181, 181, 0.05) 50%, transparent 60%),
+      var(--ink);
+    position: relative;
+    border: 1px solid rgba(247, 242, 232, 0.15);
+    overflow: hidden;
+  }
+  .event-visual::before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: 0 0 80px 20px rgba(247, 242, 232, 0.4);
+  }
+  .event-visual::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 16%;
+    left: 28%;
+    border-radius: 50%;
+    background: var(--ink);
+  }
+  .event-text .label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--rose);
+    margin-bottom: 24px;
+  }
+  .event-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1.05;
+    color: var(--paper);
+    margin-bottom: 28px;
+  }
+  .event-text h2 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+  .event-text p {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--paper);
+    opacity: 0.85;
+    margin-bottom: 14px;
+    max-width: 480px;
+  }
+  .event-text .date-line {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--paper);
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(247, 242, 232, 0.18);
+    display: inline-block;
+  }
+  .event-text .date-line em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 17px;
+    color: var(--rose);
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    padding: 140px 0 100px;
+    text-align: center;
+  }
+  .contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .contact h2 em { font-style: italic; color: var(--teal); }
+  .contact .address-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-soft);
+    margin-bottom: 60px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 32px;
+    text-align: left;
+  }
+  .contact-block h4 {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--teal);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .contact-block p {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .contact-block a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--hairline);
+    transition: border-color 0.2s;
+  }
+  .contact-block a:hover { border-color: var(--teal); }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter {
+    padding: 100px 0;
+    text-align: center;
+    background: var(--paper-warm);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .newsletter h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .newsletter p {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+  .newsletter form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--ink);
+  }
+  .newsletter input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-family: 'Spectral', serif;
+    font-size: 16px;
+    padding: 14px 0;
+    color: var(--ink);
+    outline: none;
+  }
+  .newsletter input::placeholder {
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .newsletter button {
+    background: transparent;
+    border: none;
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 14px 0 14px 20px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .newsletter button:hover { color: var(--teal); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 50px 32px 30px;
+    text-align: center;
+  }
+  footer .small-monogram {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 24px;
+  }
+  footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 24px;
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+  }
+  footer .footer-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer .footer-links a:hover { color: var(--teal); }
+  footer .copy {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    nav .nav-left, nav .nav-right { display: none; }
+    nav { grid-template-columns: 1fr; text-align: center; }
+    .hero-text { left: 24px; right: 24px; bottom: 40px; }
+    .founder-grid { grid-template-columns: 1fr; gap: 50px; }
+    .spaces-grid { grid-template-columns: 1fr; gap: 60px; }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+    .event-grid { grid-template-columns: 1fr; gap: 50px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .full-image { height: 50vh; }
+    .full-image .bg { padding: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="#carte">La Carte</a>
+    <a href="#atelier">L'Atelier</a>
+    <a href="#contact">Adresse</a>
+  </div>
+  <a class="logo" href="#">La Fenêtre</a>
+  <div class="nav-right">
+    <a href="#evenement">L'Été 2026</a>
+    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="da_devanture.jpeg" alt="La Fenêtre, devanture sur le port de Morgat">
+  <div class="hero-text">
+    <div class="kicker">— Glacier artisanal · Port de Morgat ·  Crozon —</div>
+    <h1 class="display">Glace à <em>la Fenêtre</em>,<br>Crozon.</h1>
+  </div>
+</section>
+
+<!-- INTRO / MANIFESTO -->
+<section class="intro">
+  <!-- MONOGRAMME -->
+  <svg class="monogram" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+    <!-- Outer thin circle -->
+    <circle cx="65" cy="65" r="63" fill="none" stroke="#1A1714" stroke-width="0.6"/>
+    <!-- Inner circle -->
+    <circle cx="65" cy="65" r="58" fill="none" stroke="#1A1714" stroke-width="0.4"/>
+    <!-- Curved text top -->
+    <defs>
+      <path id="topCurve" d="M 17,65 A 48,48 0 0 1 113,65" fill="none"/>
+      <path id="botCurve" d="M 17,65 A 48,48 0 0 0 113,65" fill="none"/>
+    </defs>
+    <text font-family="Cormorant SC, serif" font-size="7" letter-spacing="2.5" fill="#1A1714">
+      <textPath href="#topCurve" startOffset="50%" text-anchor="middle">LA FENÊTRE · CROZON</textPath>
+    </text>
+    <text font-family="Cormorant SC, serif" font-size="7" letter-spacing="2.5" fill="#1A1714">
+      <textPath href="#botCurve" startOffset="50%" text-anchor="middle">PORT DE MORGAT · 2026</textPath>
+    </text>
+    <!-- Center cone -->
+    <g transform="translate(65,68)" fill="none" stroke="#1A1714" stroke-width="1">
+      <circle cx="0" cy="-12" r="6.5" fill="#1A1714"/>
+      <circle cx="-5" cy="-7" r="6.5" fill="none"/>
+      <circle cx="5" cy="-6" r="6" fill="#1A1714"/>
+      <polygon points="-9,-2 9,-2 0,18" stroke-linejoin="round" fill="none"/>
+      <line x1="-6" y1="2" x2="3" y2="14" stroke-width="0.4"/>
+      <line x1="6" y1="2" x2="-3" y2="14" stroke-width="0.4"/>
+    </g>
+    <!-- Tiny stars -->
+    <text x="13" y="68" font-family="serif" font-size="9" fill="#1A1714">✦</text>
+    <text x="111" y="68" font-family="serif" font-size="9" fill="#1A1714">✦</text>
+  </svg>
+
+  <p class="lede">
+    La Fenêtre est un glacier artisanal fondé en 2026, ancré sur le port de Morgat, en Bretagne. La maison défend une approche libre, exigeante et profondément humaine de la glace : une <em>gamme courte</em>, des <em>matières premières signées MOF</em>, un service à la fenêtre les après-midis d'été. Ce choix du vrai s'incarne dans chaque cornet, depuis la vanille de Madagascar jusqu'à la framboise du Finistère.
+  </p>
+  <a class="link" href="#philosophie">Découvrir notre philosophie</a>
+</section>
+
+<!-- FULL IMAGE -->
+<div class="full-image">
+  <div class="bg">
+    <p class="legend"><span class="sc">— Été 2026, Morgat —</span>« Une fenêtre <em>ouverte</em> sur le port. »</p>
+  </div>
+</div>
+
+<!-- QUOTE / CITATION -->
+<section class="quote">
+  <div class="quote-mark display">“</div>
+  <blockquote class="display">
+    La <span class="accent">bonne cuisine</span>, c'est quand les choses ont le goût <em>de ce qu'elles sont.</em>
+  </blockquote>
+  <div class="author">
+    Curnonsky <em>— dit le Prince des Gastronomes</em>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophie">
+  <div class="container">
+    <div class="section-label">— Notre philosophie —</div>
+    <h2 class="display">Faire <em>peu,</em><br>mais faire <em>bien.</em></h2>
+    <p>
+      Huit parfums. Pas un de plus. La carte ne s'allonge pas, elle <em>se précise.</em>
+    </p>
+    <p>
+      Toutes nos glaces et nos sorbets sont conçus par un Meilleur Ouvrier de France, à partir de matières premières sourcées une à une — <em>la pistache vient vraiment de Bronte</em>, le caramel vraiment de Guérande. Pas de poudre, pas de raccourci, pas de masque.
+    </p>
+    <p>
+      L'été est court. Autant le servir <em>juste.</em>
+    </p>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder" id="atelier">
+  <div class="founder-grid">
+    <div class="founder-image">
+      <span class="placeholder-tag">— Photo gérant·e à venir —</span>
+    </div>
+    <div class="founder-text">
+      <div class="label">— Mot du fondateur —</div>
+      <blockquote class="testimonial">
+        Je n'étais pas destiné à devenir glacier. C'est en passant un été à Morgat, devant cette petite fenêtre fermée du Quai K18, que l'idée a pris forme. Une fenêtre, ouverte sur le port, l'après-midi. Quelques parfums, choisis avec soin et signés d'une main que je respecte. Pas plus, pas moins.<br><br>
+        L'essentiel, je crois, est là : une carte courte, des produits exacts, et le temps qu'il faut pour bien faire.
+      </blockquote>
+      <div class="signature">
+        — [Nom du fondateur·rice]
+        <span class="role">Fondateur · La Fenêtre</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPACES -->
+<section class="spaces">
+  <div class="spaces-head">
+    <div class="section-label">— Nos espaces —</div>
+    <h2 class="display"><em>Trois lieux,</em> une fenêtre.</h2>
+    <p>Tout part du Quai K18, mais s'organise autour de trois entrées : la fenêtre du port, la carte des parfums, et l'atelier où le geste se transmet.</p>
+  </div>
+  <div class="spaces-grid">
+
+    <article class="space-card">
+      <div class="visual v1">
+        <svg width="56" height="56" viewBox="0 0 60 60">
+          <rect x="8" y="14" width="44" height="32" fill="none" stroke="#F7F2E8" stroke-width="1"/>
+          <line x1="8" y1="30" x2="52" y2="30" stroke="#F7F2E8" stroke-width="0.6"/>
+          <line x1="30" y1="14" x2="30" y2="46" stroke="#F7F2E8" stroke-width="0.6"/>
+          <rect x="8" y="46" width="44" height="4" fill="#F7F2E8"/>
+        </svg>
+      </div>
+      <div class="label">— Le point de vente —</div>
+      <h3 class="display">La Fenêtre</h3>
+      <p>La fenêtre côté port, ouverte tous les après-midis de l'été. Service au comptoir, terrasse de quelques tables.</p>
+      <a class="more" href="#">Découvrir →</a>
+    </article>
+
+    <article class="space-card">
+      <div class="visual v2">
+        <svg width="56" height="56" viewBox="0 0 60 60">
+          <circle cx="22" cy="22" r="9" fill="none" stroke="#1A1714" stroke-width="1"/>
+          <circle cx="36" cy="20" r="8" fill="none" stroke="#1A1714" stroke-width="1"/>
+          <circle cx="30" cy="34" r="9" fill="none" stroke="#1A1714" stroke-width="1"/>
+          <polygon points="18,42 42,42 30,58" fill="none" stroke="#1A1714" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="label">— Les parfums —</div>
+      <h3 class="display">La Carte</h3>
+      <p>Huit parfums sourcés, mis à jour selon les arrivages et la saison. Toppings sans limite, faits maison.</p>
+      <a class="more" href="#carte">Voir la carte →</a>
+    </article>
+
+    <article class="space-card">
+      <div class="visual v3">
+        <svg width="56" height="56" viewBox="0 0 60 60">
+          <path d="M 12 48 Q 12 22, 30 22 Q 48 22, 48 48 Z" fill="none" stroke="#1A1714" stroke-width="1"/>
+          <line x1="20" y1="48" x2="20" y2="32" stroke="#1A1714" stroke-width="0.6"/>
+          <line x1="30" y1="48" x2="30" y2="22" stroke="#1A1714" stroke-width="0.6"/>
+          <line x1="40" y1="48" x2="40" y2="32" stroke="#1A1714" stroke-width="0.6"/>
+          <circle cx="30" cy="14" r="3" fill="#1A1714"/>
+        </svg>
+      </div>
+      <div class="label">— Le geste —</div>
+      <h3 class="display">L'Atelier</h3>
+      <p>Le savoir-faire MOF, raconté en détail. L'origine de chaque ingrédient, la fabrication, la transmission.</p>
+      <a class="more" href="#">En savoir plus →</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- CARTE -->
+<section class="menu" id="carte">
+  <div class="menu-head">
+    <div class="date">— Carte du 3 mai 2026 —</div>
+    <h2 class="display">La carte <em>du jour</em></h2>
+    <p>Huit parfums, signés d'un Meilleur Ouvrier de France, choisis pour leur précision et leur saison.</p>
+  </div>
+
+  <div class="menu-grid">
+
+    <div class="flavor-card">
+      <svg class="flavor-illust" viewBox="0 0 70 70">
+        <path d="M 35 12 Q 28 10, 28 22 L 28 50 Q 28 60, 35 60 Q 42 60, 42 50 L 42 22 Q 42 10, 35 12 Z" fill="none" stroke="#1A1714" stroke-width="1"/>
+        <line x1="32" y1="20" x2="38" y2="20" stroke="#1A1714" stroke-width="0.5"/>
+        <line x1="31" y1="28" x2="39" y2="28" stroke="#1A1714" stroke-width="0.5"/>
+        <line x1="30" y1="36" x2="40" y2="36" stroke="#1A1714" stroke-width="0.5"/>
+        <line x1="31" y1="44" x2="39" y2="44" stroke="#1A1714" stroke-width="0.5"/>
+        <line x1="32" y1="52" x2="38" y2="52" stroke="#1A1714" stroke-width="0.5"/>
+      </svg>
+      <div class="name">Vanille</div>
+      <div class="tag">Une gousse fendue, et le temps qu'il faut.</div>
+      <div class="origin">Madagascar · IGP</div>
+    </div>
+
+    <div class="flavor-card">
+      <svg class="flavor-illust" viewBox="0 0 70 70">
+        <path d="M 35 18 L 32 14 L 38 14 Z" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <path d="M 35 14 Q 22 14, 22 32 Q 22 52, 35 56 Q 48 52, 48 32 Q 48 14, 35 14 Z" fill="none" stroke="#1A1714" stroke-width="1"/>
+        <circle cx="29" cy="26" r="0.8" fill="#1A1714"/>
+        <circle cx="35" cy="22" r="0.8" fill="#1A1714"/>
+        <circle cx="41" cy="26" r="0.8" fill="#1A1714"/>
+        <circle cx="32" cy="34" r="0.8" fill="#1A1714"/>
+        <circle cx="38" cy="34" r="0.8" fill="#1A1714"/>
+        <circle cx="29" cy="42" r="0.8" fill="#1A1714"/>
+        <circle cx="35" cy="44" r="0.8" fill="#1A1714"/>
+        <circle cx="41" cy="42" r="0.8" fill="#1A1714"/>
+      </svg>
+      <div class="name">Fraise</div>
+      <div class="tag">Récolte du matin, prise au mortier.</div>
+      <div class="origin">Plougastel · Bretagne</div>
+    </div>
+
+    <div class="flavor-card">
+      <svg class="flavor-illust" viewBox="0 0 70 70">
+        <ellipse cx="35" cy="38" rx="18" ry="20" fill="none" stroke="#1A1714" stroke-width="1"/>
+        <path d="M 32 17 Q 30 12, 33 11 L 35 16" fill="#1A1714"/>
+        <path d="M 33 14 Q 38 11, 40 16 L 35 16" fill="#1A1714"/>
+        <ellipse cx="29" cy="34" rx="2" ry="3" fill="none" stroke="#1A1714" stroke-width="0.4"/>
+      </svg>
+      <div class="name">Citron</div>
+      <div class="tag">Sorbet plein fruit, sans masque.</div>
+      <div class="origin">Menton · IGP</div>
+    </div>
+
+    <div class="flavor-card">
+      <svg class="flavor-illust" viewBox="0 0 70 70">
+        <rect x="20" y="22" width="30" height="26" fill="#1A1714"/>
+        <line x1="20" y1="29" x2="50" y2="29" stroke="#F7F2E8" stroke-width="0.5"/>
+        <line x1="20" y1="36" x2="50" y2="36" stroke="#F7F2E8" stroke-width="0.5"/>
+        <line x1="20" y1="43" x2="50" y2="43" stroke="#F7F2E8" stroke-width="0.5"/>
+        <line x1="27" y1="22" x2="27" y2="48" stroke="#F7F2E8" stroke-width="0.5"/>
+        <line x1="35" y1="22" x2="35" y2="48" stroke="#F7F2E8" stroke-width="0.5"/>
+        <line x1="43" y1="22" x2="43" y2="48" stroke="#F7F2E8" stroke-width="0.5"/>
+      </svg>
+      <div class="name">Chocolat</div>
+      <div class="tag">Pure origine 70%, jamais sucré.</div>
+      <div class="origin">Pérou · Pure origine</div>
+    </div>
+
+    <div class="flavor-card">
+      <svg class="flavor-illust" viewBox="0 0 70 70">
+        <ellipse cx="35" cy="35" rx="14" ry="18" fill="none" stroke="#1A1714" stroke-width="1"/>
+        <ellipse cx="32" cy="34" rx="6" ry="9" fill="none" stroke="#1A1714" stroke-width="0.6"/>
+        <ellipse cx="38" cy="34" rx="6" ry="9" fill="none" stroke="#1A1714" stroke-width="0.6"/>
+        <line x1="35" y1="17" x2="35" y2="13" stroke="#1A1714" stroke-width="0.7"/>
+      </svg>
+      <div class="name">Pistache</div>
+      <div class="tag">De Bronte, broyée à la maison.</div>
+      <div class="origin">Sicile · DOP</div>
+    </div>
+
+    <div class="flavor-card">
+      <svg class="flavor-illust" viewBox="0 0 70 70">
+        <path d="M 18 30 Q 18 20, 28 20 L 42 20 Q 52 20, 52 30 Q 52 50, 35 50 Q 18 50, 18 30 Z" fill="none" stroke="#1A1714" stroke-width="1"/>
+        <path d="M 22 32 Q 22 26, 28 26 L 42 26 Q 48 26, 48 32" fill="none" stroke="#1A1714" stroke-width="0.5"/>
+        <path d="M 26 40 Q 26 36, 30 36 L 40 36 Q 44 36, 44 40" fill="none" stroke="#1A1714" stroke-width="0.5"/>
+      </svg>
+      <div class="name">Caramel</div>
+      <div class="tag">Beurre salé, fleur de sel cassée.</div>
+      <div class="origin">Guérande · IGP</div>
+    </div>
+
+    <div class="flavor-card">
+      <svg class="flavor-illust" viewBox="0 0 70 70">
+        <circle cx="29" cy="32" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="35" cy="28" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="41" cy="32" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="26" cy="38" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="32" cy="40" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="38" cy="40" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="44" cy="38" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="29" cy="46" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="35" cy="48" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <circle cx="41" cy="46" r="4" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <line x1="35" y1="22" x2="35" y2="18" stroke="#1A1714" stroke-width="0.7"/>
+      </svg>
+      <div class="name">Framboise</div>
+      <div class="tag">Sorbet, producteur du Finistère.</div>
+      <div class="origin">Bretagne · Local</div>
+    </div>
+
+    <div class="flavor-card">
+      <svg class="flavor-illust" viewBox="0 0 70 70">
+        <ellipse cx="35" cy="42" rx="13" ry="14" fill="none" stroke="#1A1714" stroke-width="1"/>
+        <path d="M 26 36 Q 24 24, 35 22 Q 46 24, 44 36" fill="none" stroke="#1A1714" stroke-width="0.7"/>
+        <line x1="35" y1="22" x2="35" y2="42" stroke="#1A1714" stroke-width="0.4"/>
+      </svg>
+      <div class="name">Noisette</div>
+      <div class="tag">Tonda Gentile, torréfiée maison.</div>
+      <div class="origin">Piémont · IGP</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ÉVÉNEMENT -->
+<section class="event" id="evenement">
+  <div class="event-grid">
+    <div class="event-visual"></div>
+    <div class="event-text">
+      <div class="label">— L'événement de l'été —</div>
+      <h2 class="display">Une éclipse,<br><em>un cornet,</em><br>le ciel du port.</h2>
+      <p>
+        Le 12 août, une éclipse solaire passera au-dessus de la pointe de Crozon. Nous vous garderons des lunettes de protection à la fenêtre, et nous fermerons la carte sur deux glaces de circonstance — vanille de Madagascar, chocolat noir.
+      </p>
+      <p>
+        Rendez-vous sur le port, le nez en l'air, le cornet à la main.
+      </p>
+      <span class="date-line">— Mercredi <em>12 août 2026</em> · 14h — 22h —</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">— Pour nous trouver —</div>
+  <h2 class="display">Quai K18,<br><em>Port de Morgat.</em></h2>
+  <div class="address-line">29160 Crozon · Finistère · Bretagne</div>
+
+  <div class="contact-grid">
+    <div class="contact-block">
+      <h4>Saison</h4>
+      <p>Mi-mai → fin septembre<br>Tous les jours<br>14h — 22h</p>
+    </div>
+    <div class="contact-block">
+      <h4>Accès</h4>
+      <p>Face à la plage. Petit immeuble du port. Entrée par le couloir, puis suivre l'odeur de vanille.</p>
+    </div>
+    <div class="contact-block">
+      <h4>Nous écrire</h4>
+      <p>
+        <a href="mailto:contact@lafenetre.fr">contact@lafenetre.fr</a><br>
+        <a href="https://instagram.com" target="_blank">@lafenetre.crozon</a><br>
+        +33 (0)2 98 — — —
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="section-label">— Newsletter saisonnière —</div>
+  <h3 class="display"><em>Restez informé·e</em> de nos nouveautés et des moments forts de la maison.</h3>
+  <p>Une lettre courte, deux ou trois fois par saison. Pas de spam, pas de publicité. Promis.</p>
+  <form>
+    <input type="email" placeholder="votre adresse e-mail">
+    <button type="submit">S'inscrire →</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg class="small-monogram" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="65" cy="65" r="60" fill="none" stroke="#4A413A" stroke-width="0.6"/>
+    <g transform="translate(65,68)" fill="none" stroke="#4A413A" stroke-width="1">
+      <circle cx="0" cy="-12" r="6.5" fill="#4A413A"/>
+      <circle cx="-5" cy="-7" r="6.5" fill="none"/>
+      <circle cx="5" cy="-6" r="6" fill="#4A413A"/>
+      <polygon points="-9,-2 9,-2 0,18" stroke-linejoin="round" fill="none"/>
+    </g>
+  </svg>
+
+  <div class="footer-links">
+    <a href="#carte">La Carte</a>
+    <a href="#atelier">L'Atelier</a>
+    <a href="#contact">Adresse</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">Politique de confidentialité</a>
+  </div>
+  <div class="copy">© 2026 La Fenêtre · Crozon · Finistère · Tous droits réservés</div>
+</footer>
+
+</body>
+</html>

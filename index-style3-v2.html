@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Fenêtre — Glace artisanale, Crozon · Port de Morgat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Yellowtail&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F8EFD9;
+    --cream-deep: #F2E5C5;
+    --ink: #1F1B16;
+    --ink-soft: #5A5147;
+    --pink: #F5C6D2;
+    --pink-deep: #ECA9BC;
+    --sage: #D4DFC9;
+    --sage-deep: #B8C9A8;
+    --periwinkle: #C5D4E4;
+    --periwinkle-deep: #A8BCD2;
+    --butter: #F5E08C;
+    --butter-deep: #ECCF5A;
+    --coral: #F0A78C;
+    --coral-deep: #E08068;
+    --sand: #E8DCC4;
+    --teal: #0E4F58;
+    --neon: #FF3B81;
+    --neon-glow: #FF66B2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .display { font-family: 'Bricolage Grotesque', sans-serif; letter-spacing: -0.02em; }
+  .neon-text {
+    font-family: 'Yellowtail', cursive;
+    color: var(--neon);
+    text-shadow:
+      0 0 4px rgba(255, 102, 178, 0.55),
+      0 0 14px rgba(255, 102, 178, 0.35),
+      0 0 24px rgba(255, 102, 178, 0.18);
+    font-weight: normal;
+  }
+
+  a { color: inherit; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(248, 239, 217, 0.94);
+    backdrop-filter: blur(12px);
+    padding: 18px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  nav .logo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  nav .logo .dot {
+    color: var(--neon);
+    font-size: 28px;
+    line-height: 0;
+  }
+  nav .nav-left, nav .nav-right {
+    display: flex;
+    gap: 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  nav .nav-right { justify-content: flex-end; }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--coral-deep); }
+  nav .cta-mini {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  nav .cta-mini:hover { background: var(--teal); color: var(--cream); }
+
+  /* ===== ANNOUNCEMENT BAR ===== */
+  .annc-bar {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 12px 24px;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .annc-bar span { margin: 0 14px; opacity: 0.85; }
+  .annc-bar .star { color: var(--butter); }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--cream);
+    padding: 60px 32px 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+  }
+  .hero-text .kicker {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-text h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: clamp(54px, 8.5vw, 132px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .hero-text h1 .neon-line {
+    display: block;
+    font-family: 'Yellowtail', cursive;
+    font-weight: normal;
+    font-size: clamp(36px, 5.5vw, 72px);
+    color: var(--neon);
+    text-shadow:
+      0 0 6px rgba(255, 102, 178, 0.5),
+      0 0 18px rgba(255, 102, 178, 0.4),
+      0 0 32px rgba(255, 102, 178, 0.22);
+    letter-spacing: 0;
+    margin: 4px 0;
+    transform: rotate(-2deg);
+    transform-origin: left;
+  }
+  .hero-text .lede {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 36px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 16px 28px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .btn-primary:hover { background: var(--teal); }
+  .btn-secondary {
+    background: var(--cream);
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    overflow: hidden;
+    z-index: 2;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .floating-sticker {
+    position: absolute;
+    border-radius: 999px;
+    padding: 16px 22px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.015em;
+    border: 1.5px solid var(--ink);
+    z-index: 3;
+  }
+  .floating-sticker.s1 {
+    top: 20px;
+    right: -20px;
+    background: var(--butter);
+    transform: rotate(8deg);
+  }
+  .floating-sticker.s2 {
+    bottom: 80px;
+    left: -30px;
+    background: var(--pink);
+    transform: rotate(-6deg);
+  }
+  .floating-sticker.s3 {
+    bottom: 20px;
+    right: 30px;
+    background: var(--sage);
+    transform: rotate(4deg);
+    font-size: 13px;
+  }
+
+  /* Hero decorative star */
+  .star-deco {
+    position: absolute;
+    color: var(--coral-deep);
+    font-size: 38px;
+    z-index: 1;
+  }
+
+  /* ===== NOW SCOOPING ===== */
+  .now-scooping {
+    padding: 120px 32px;
+    background: var(--cream);
+  }
+  .ns-header {
+    max-width: 1280px;
+    margin: 0 auto 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .ns-header .left .label {
+    display: inline-block;
+    background: var(--coral);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .ns-header h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: clamp(44px, 6vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  .ns-header h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--coral-deep);
+  }
+  .ns-header .right {
+    max-width: 380px;
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+
+  .scoops-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .scoop-card {
+    border-radius: 28px;
+    padding: 28px 24px 32px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease;
+    cursor: pointer;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid var(--ink);
+  }
+  .scoop-card:hover { transform: translateY(-6px); }
+  .scoop-card .num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    opacity: 0.55;
+  }
+  .scoop-card .scoop-visual {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 14px 0;
+  }
+  .scoop-card .scoop-circle {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink);
+    position: relative;
+    box-shadow: inset 0 -10px 25px rgba(31, 27, 22, 0.08);
+  }
+  .scoop-card h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .scoop-card .origin {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* Color variants */
+  .scoop-card.c1 { background: var(--cream-deep); }
+  .scoop-card.c1 .scoop-circle { background: #F4DCB0; }
+
+  .scoop-card.c2 { background: var(--pink); }
+  .scoop-card.c2 .scoop-circle { background: #E68FA3; }
+
+  .scoop-card.c3 { background: var(--butter); }
+  .scoop-card.c3 .scoop-circle { background: #ECCF5A; }
+
+  .scoop-card.c4 { background: #C2A78B; }
+  .scoop-card.c4 .scoop-circle { background: #6B4A33; }
+
+  .scoop-card.c5 { background: var(--sage); }
+  .scoop-card.c5 .scoop-circle { background: #9CB182; }
+
+  .scoop-card.c6 { background: var(--sand); }
+  .scoop-card.c6 .scoop-circle { background: #C49B62; }
+
+  .scoop-card.c7 { background: var(--coral); }
+  .scoop-card.c7 .scoop-circle { background: #D86B5A; }
+
+  .scoop-card.c8 { background: var(--periwinkle); }
+  .scoop-card.c8 .scoop-circle { background: #A07F62; }
+
+  /* ===== EVENT (eclipse) ===== */
+  .event {
+    background: var(--periwinkle);
+    padding: 120px 32px;
+    border-top: 1.5px solid var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .event-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .event-text .label {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .event-text h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: clamp(44px, 6vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .event-text h2 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+  .event-text p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 16px;
+    max-width: 480px;
+  }
+  .event-text .date-pill {
+    display: inline-block;
+    background: var(--cream);
+    border: 1.5px solid var(--ink);
+    padding: 14px 24px;
+    border-radius: 999px;
+    margin-top: 24px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .event-text .date-pill em {
+    font-style: italic;
+    color: var(--coral-deep);
+  }
+  .event-visual {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .eclipse {
+    width: 75%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--cream);
+    box-shadow: 0 0 60px 10px rgba(248, 239, 217, 0.7);
+    position: relative;
+    border: 1.5px solid var(--ink);
+  }
+  .eclipse::after {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 14%;
+    border-radius: 50%;
+    background: var(--ink);
+  }
+  .ev-star {
+    position: absolute;
+    color: var(--ink);
+    font-size: 32px;
+  }
+  .ev-star.s1 { top: 8%; left: 12%; transform: rotate(-15deg); }
+  .ev-star.s2 { top: 20%; right: 15%; font-size: 24px; }
+  .ev-star.s3 { bottom: 18%; left: 20%; font-size: 28px; transform: rotate(20deg); }
+  .ev-star.s4 { bottom: 10%; right: 18%; font-size: 22px; }
+
+  /* ===== MOF SECTION ===== */
+  .mof {
+    padding: 120px 32px;
+    background: var(--sage);
+  }
+  .mof-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .mof-image {
+    aspect-ratio: 4/5;
+    border-radius: 28px;
+    background:
+      linear-gradient(160deg, #C9A78F 0%, #B89376 50%, #8C6B52 100%);
+    border: 1.5px solid var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .mof-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 35% 35%, rgba(248, 239, 217, 0.18), transparent 60%);
+  }
+  .mof-image .ph {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    font-size: 10px;
+    color: var(--cream);
+    opacity: 0.55;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .mof-text .label {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .mof-text h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+  }
+  .mof-text h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--teal);
+  }
+  .mof-text p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 16px;
+    max-width: 480px;
+  }
+  .mof-text p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .mof-stamp {
+    margin-top: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--cream);
+    padding: 12px 20px 12px 14px;
+    border-radius: 999px;
+    border: 1.5px solid var(--ink);
+  }
+  .mof-stamp .badge {
+    width: 36px;
+    height: 36px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+  .mof-stamp .name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .mof-stamp .name em {
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-left: 4px;
+  }
+
+  /* ===== FIND US ===== */
+  .find-us {
+    padding: 120px 32px;
+    background: var(--cream);
+    text-align: center;
+  }
+  .find-us .label {
+    display: inline-block;
+    background: var(--butter);
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .find-us h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: clamp(48px, 7vw, 100px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    margin-bottom: 18px;
+  }
+  .find-us h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--teal);
+  }
+  .find-us .address {
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-bottom: 56px;
+  }
+  .info-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 60px;
+  }
+  .info-pill {
+    background: var(--cream);
+    border: 1.5px solid var(--ink);
+    padding: 26px 22px;
+    border-radius: 22px;
+    text-align: left;
+  }
+  .info-pill .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .info-pill.p1 { background: var(--pink); }
+  .info-pill.p2 { background: var(--periwinkle); }
+  .info-pill.p3 { background: var(--sage); }
+  .info-pill.p1 .icon { background: var(--cream); }
+  .info-pill.p2 .icon { background: var(--cream); }
+  .info-pill.p3 .icon { background: var(--cream); }
+  .info-pill h4 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .info-pill p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .info-pill p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 32px 32px;
+  }
+  .footer-top {
+    max-width: 1180px;
+    margin: 0 auto 60px;
+    text-align: center;
+  }
+  .footer-top .neon-sig {
+    font-family: 'Yellowtail', cursive;
+    font-size: clamp(50px, 7vw, 92px);
+    color: var(--neon);
+    text-shadow:
+      0 0 8px rgba(255, 102, 178, 0.55),
+      0 0 22px rgba(255, 102, 178, 0.4),
+      0 0 40px rgba(255, 102, 178, 0.22);
+    line-height: 1;
+    margin-bottom: 24px;
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+  .footer-top p {
+    font-size: 15px;
+    color: var(--cream);
+    opacity: 0.7;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .footer-bottom {
+    max-width: 1180px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(248, 239, 217, 0.18);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--cream);
+    opacity: 0.65;
+  }
+  .footer-bottom a {
+    color: var(--cream);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.2s;
+  }
+  .footer-bottom a:hover { color: var(--neon); opacity: 1; }
+  .footer-socials a {
+    margin-left: 20px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 14px 18px; }
+    nav .nav-left, nav .nav-right { display: none; }
+    nav { grid-template-columns: 1fr; text-align: center; }
+    .annc-bar { font-size: 11.5px; }
+    .annc-bar span { margin: 0 6px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+    .hero-visual { max-width: 480px; margin: 0 auto; }
+    .scoops-grid { grid-template-columns: repeat(2, 1fr); }
+    .event-grid { grid-template-columns: 1fr; gap: 50px; }
+    .mof-grid { grid-template-columns: 1fr; gap: 50px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .ns-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="#carte">La Carte</a>
+    <a href="#mof">Le Geste</a>
+    <a href="#trouver">Trouver</a>
+  </div>
+  <a class="logo" href="#">la fenêtre<span class="dot">.</span></a>
+  <div class="nav-right">
+    <a href="https://instagram.com" target="_blank">Instagram ↗</a>
+    <a href="#trouver" class="cta-mini">Nous trouver</a>
+  </div>
+</nav>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="annc-bar">
+  <span>★</span><span>Mi-mai → fin septembre</span><span class="star">·</span><span>Tous les jours · 14h–22h</span><span class="star">·</span><span>Quai K18, Port de Morgat</span><span>★</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="kicker">Saison 2026 · Crozon</span>
+      <h1 class="display">
+        Glace<br>
+        <span class="neon-line">toppings sans limite</span>
+        artisanale.
+      </h1>
+      <p class="lede">8 parfums signés Meilleur Ouvrier de France. Servis à la fenêtre, sur le port de Morgat. Pas plus, pas moins.</p>
+      <div class="hero-cta">
+        <a href="#carte" class="btn btn-primary">Voir la carte →</a>
+        <a href="#trouver" class="btn btn-secondary">Nous trouver</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <span class="star-deco" style="top: 10%; left: -10px; transform: rotate(-12deg);">✦</span>
+      <span class="star-deco" style="bottom: 18%; right: -10px; font-size: 30px; transform: rotate(20deg);">✦</span>
+
+      <div class="hero-image">
+        <img src="da_devanture.jpeg" alt="Devanture de La Fenêtre, Crozon">
+      </div>
+
+      <div class="floating-sticker s1">8 parfums ✦</div>
+      <div class="floating-sticker s2">Signé MOF</div>
+      <div class="floating-sticker s3">Fait maison</div>
+    </div>
+  </div>
+</section>
+
+<!-- NOW SCOOPING -->
+<section id="carte" class="now-scooping">
+  <div class="ns-header">
+    <div class="left">
+      <span class="label">★ Now scooping ★</span>
+      <h2 class="display">Le bonheur a<br><em>tous les goûts.</em></h2>
+    </div>
+    <div class="right">
+      Cette semaine, 8 parfums sourcés un par un. La carte change selon les arrivages. Toppings sans limite, faits maison.
+    </div>
+  </div>
+
+  <div class="scoops-grid">
+
+    <div class="scoop-card c1">
+      <div class="num">01</div>
+      <div class="scoop-visual"><div class="scoop-circle"></div></div>
+      <h3 class="display">Vanille de Madagascar</h3>
+      <div class="origin">Sava · IGP</div>
+    </div>
+
+    <div class="scoop-card c2">
+      <div class="num">02</div>
+      <div class="scoop-visual"><div class="scoop-circle"></div></div>
+      <h3 class="display">Fraise de Plougastel</h3>
+      <div class="origin">Bretagne · Récolte du matin</div>
+    </div>
+
+    <div class="scoop-card c3">
+      <div class="num">03</div>
+      <div class="scoop-visual"><div class="scoop-circle"></div></div>
+      <h3 class="display">Citron de Menton</h3>
+      <div class="origin">Côte d'Azur · IGP</div>
+    </div>
+
+    <div class="scoop-card c4">
+      <div class="num">04</div>
+      <div class="scoop-visual"><div class="scoop-circle"></div></div>
+      <h3 class="display" style="color: var(--cream);">Chocolat 70%</h3>
+      <div class="origin" style="color: var(--cream); opacity: 0.85;">Pure origine · Pérou</div>
+    </div>
+
+    <div class="scoop-card c5">
+      <div class="num">05</div>
+      <div class="scoop-visual"><div class="scoop-circle"></div></div>
+      <h3 class="display">Pistache de Sicile</h3>
+      <div class="origin">Bronte · DOP</div>
+    </div>
+
+    <div class="scoop-card c6">
+      <div class="num">06</div>
+      <div class="scoop-visual"><div class="scoop-circle"></div></div>
+      <h3 class="display">Caramel beurre salé</h3>
+      <div class="origin">Guérande · IGP</div>
+    </div>
+
+    <div class="scoop-card c7">
+      <div class="num">07</div>
+      <div class="scoop-visual"><div class="scoop-circle"></div></div>
+      <h3 class="display">Framboise de Bretagne</h3>
+      <div class="origin">Finistère · Local</div>
+    </div>
+
+    <div class="scoop-card c8">
+      <div class="num">08</div>
+      <div class="scoop-visual"><div class="scoop-circle"></div></div>
+      <h3 class="display">Noisette du Piémont</h3>
+      <div class="origin">Tonda Gentile · IGP</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EVENT (eclipse) -->
+<section class="event">
+  <div class="event-grid">
+    <div class="event-text">
+      <span class="label">L'événement de l'été</span>
+      <h2 class="display">Une éclipse,<br><em>un cornet,</em><br>le ciel du port.</h2>
+      <p>Le 12 août, une éclipse solaire passera au-dessus de la pointe de Crozon. On vous garde des lunettes, et on tient la fenêtre ouverte plus longtemps que d'habitude.</p>
+      <p>Rendez-vous sur le port, le nez en l'air, le cornet à la main.</p>
+      <div class="date-pill">★ Mercredi <em>12 août 2026</em> ★</div>
+    </div>
+    <div class="event-visual">
+      <span class="ev-star s1">✦</span>
+      <span class="ev-star s2">✦</span>
+      <span class="ev-star s3">✦</span>
+      <span class="ev-star s4">✦</span>
+      <div class="eclipse"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MOF -->
+<section id="mof" class="mof">
+  <div class="mof-grid">
+    <div class="mof-image">
+      <span class="ph">— Photo MOF Cabiron à venir —</span>
+    </div>
+    <div class="mof-text">
+      <span class="label">Le geste</span>
+      <h2 class="display">Du <em>vrai,</em><br>fait par un artisan.</h2>
+      <p>Toutes nos glaces et nos sorbets sont conçus par un <strong>Meilleur Ouvrier de France</strong>. Un titre qui ne se gagne qu'une fois — et qui se mérite chaque jour à la cuillère.</p>
+      <p>Pas de poudre, pas de masque, pas de raccourci. La pistache vient vraiment de Bronte, le caramel vraiment de Guérande, la fraise vraiment de Plougastel.</p>
+      <div class="mof-stamp">
+        <div class="badge">MOF</div>
+        <span class="name">Gérard Cabiron <em>· Meilleur Ouvrier de France</em></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section id="trouver" class="find-us">
+  <span class="label">Pour nous trouver</span>
+  <h2 class="display">Quai K18,<br><em>Port de Morgat.</em></h2>
+  <div class="address">29160 Crozon · Finistère · Bretagne</div>
+
+  <div class="info-grid">
+    <div class="info-pill p1">
+      <div class="icon">★</div>
+      <h4 class="display">Saison</h4>
+      <p><strong>Mi-mai → fin sept.</strong><br>Tous les jours · 14h–22h</p>
+    </div>
+    <div class="info-pill p2">
+      <div class="icon">↗</div>
+      <h4 class="display">Accès</h4>
+      <p>Face à la plage. Petit immeuble du port. <strong>Entrée par le couloir.</strong></p>
+    </div>
+    <div class="info-pill p3">
+      <div class="icon">✿</div>
+      <h4 class="display">Contact</h4>
+      <p><strong>contact@lafenetre.fr</strong><br>@lafenetre.crozon</p>
+    </div>
+  </div>
+
+  <a href="#" class="btn btn-primary">Voir le plan →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="neon-sig">à très vite</div>
+    <p>Une lettre courte, deux ou trois fois par saison. Pas de spam.</p>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 La Fenêtre · Crozon · Finistère</span>
+    <div class="footer-socials">
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">Mentions légales</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

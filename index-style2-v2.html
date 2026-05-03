@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Fenêtre — Glacier artisanal, Crozon · Été 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@400;500;600&family=Petit+Formal+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4E9D4;
+    --paper-deep: #EDDFC0;
+    --paper-shadow: #E5D8BB;
+    --paper-card: #FBF4E0;
+    --ink: #1B3A52;
+    --ink-soft: #4A5C70;
+    --sea: #A8C5D0;
+    --sea-deep: #7AAFC0;
+    --shell: #F2C8C8;
+    --coral: #D8755C;
+    --coral-deep: #B85A42;
+    --sand: #D9C5A0;
+    --sand-deep: #C5AC7E;
+    --stamp: #B53D3D;
+    --teal: #0E4F58;
+    --hairline: rgba(27, 58, 82, 0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: var(--paper);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(217,197,160,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(217,197,160,0.3) 0%, transparent 50%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.6  0 0 0 0 0.5  0 0 0 0 0.3  0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .script { font-family: 'Petit Formal Script', cursive; }
+  .display { font-family: 'Playfair Display', serif; }
+  .sc { font-family: 'Cormorant SC', serif; letter-spacing: 0.18em; text-transform: uppercase; }
+  a { color: inherit; }
+
+  section { position: relative; padding: 80px 24px; }
+
+  /* ===== TOP BAR ===== */
+  .topbar {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 10px 24px;
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .topbar span { margin: 0 12px; }
+  .topbar .o { color: var(--coral); }
+
+  /* ===== NAV ===== */
+  nav.main {
+    background: var(--paper);
+    padding: 18px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-bottom: 1px solid var(--ink);
+  }
+  nav.main .nav-left, nav.main .nav-right {
+    display: flex;
+    gap: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  nav.main .nav-right { justify-content: flex-end; }
+  nav.main a {
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  nav.main a:hover { color: var(--coral); border-bottom-color: var(--coral); }
+  nav.main .logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* ============================================== */
+  /* ===== HERO MOODBOARD (REDONE) ===== */
+  /* ============================================== */
+  .hero-moodboard {
+    min-height: calc(100vh - 110px);
+    padding: 80px 20px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .moodboard {
+    position: relative;
+    width: min(1200px, 100%);
+    min-height: 660px;
+    margin: 0 auto;
+  }
+
+  /* Decorative ornaments */
+  .moodboard .ornament {
+    position: absolute;
+    color: var(--coral);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    z-index: 1;
+  }
+  .moodboard .o-tl { top: 10px; left: 30px; font-size: 60px; opacity: 0.4; transform: rotate(-15deg); }
+  .moodboard .o-tr { top: 30px; right: 40px; font-size: 36px; opacity: 0.5; }
+  .moodboard .o-bl { bottom: 30px; left: 80px; font-size: 28px; opacity: 0.5; transform: rotate(20deg); }
+  .moodboard .o-br { bottom: 60px; right: 60px; font-size: 44px; opacity: 0.45; transform: rotate(-10deg); }
+
+  /* Postcard (centerpiece) */
+  .postcard {
+    width: min(820px, 95%);
+    background: var(--paper-card);
+    border-radius: 4px;
+    box-shadow:
+      0 1px 3px rgba(27,58,82,0.1),
+      0 24px 60px rgba(27,58,82,0.22),
+      inset 0 0 0 1px rgba(27,58,82,0.06);
+    transform: rotate(-1deg);
+    position: relative;
+    padding: 38px 44px;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 36px;
+    margin: 30px auto;
+    z-index: 5;
+  }
+  .postcard::before {
+    content: '';
+    position: absolute;
+    inset: 13px;
+    border: 1px dashed rgba(27,58,82,0.22);
+    pointer-events: none;
+    border-radius: 2px;
+  }
+  .postcard-illust {
+    background:
+      linear-gradient(to bottom,
+        #B8D4DD 0%,
+        #B8D4DD 56%,
+        #D9C5A0 56%,
+        #E5D2A8 100%);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+  }
+  /* Sun in postcard illustration (more refined) */
+  .postcard-illust .sun {
+    position: absolute;
+    top: 28px;
+    right: 36px;
+    width: 78px;
+    height: 78px;
+    background: var(--coral);
+    border-radius: 50%;
+    box-shadow: 0 0 26px rgba(216,117,92,0.32);
+    border: 1.5px solid var(--ink);
+  }
+  .postcard-illust .sun-rays {
+    position: absolute;
+    top: 28px;
+    right: 36px;
+    width: 78px;
+    height: 78px;
+    pointer-events: none;
+  }
+  .postcard-illust .seagull {
+    position: absolute;
+    color: var(--ink);
+    font-family: serif;
+    opacity: 0.65;
+  }
+  .postcard-illust .s1 { top: 28%; left: 38%; font-size: 14px; transform: rotate(-8deg); }
+  .postcard-illust .s2 { top: 18%; left: 58%; font-size: 11px; transform: rotate(6deg); }
+  .postcard-illust .lighthouse-svg {
+    position: absolute;
+    bottom: 38%;
+    left: 18%;
+  }
+  .postcard-illust .wave-svg {
+    position: absolute;
+    bottom: 36%;
+    left: 0;
+    right: 0;
+    opacity: 0.55;
+  }
+  .postcard-illust .cone-svg {
+    position: absolute;
+    bottom: 8%;
+    right: 14%;
+  }
+  .postcard-illust .label-bottom {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    text-align: center;
+    font-family: 'Cormorant SC', serif;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    color: var(--ink);
+    opacity: 0.6;
+  }
+
+  /* Verso of postcard - text side (REDONE: no giant Bonjour script) */
+  .postcard-verso {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding: 4px 0;
+  }
+  .postcard-verso .stamp {
+    align-self: flex-end;
+    width: 88px;
+    height: 108px;
+    background: var(--shell);
+    border: 2px solid var(--paper-card);
+    box-shadow: 0 0 0 1px var(--ink);
+    padding: 6px;
+    transform: rotate(3deg);
+  }
+  .postcard-verso .stamp-inner {
+    width: 100%;
+    height: 100%;
+    background: var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+    color: var(--paper);
+    font-family: 'Cormorant SC', serif;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+  .postcard-verso .stamp-inner .core {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--shell);
+  }
+  .postcard-verso .postmark {
+    position: absolute;
+    top: 86px;
+    right: -10px;
+    width: 130px;
+    height: 130px;
+    border: 2px solid var(--stamp);
+    border-radius: 50%;
+    color: var(--stamp);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform: rotate(-12deg);
+    opacity: 0.55;
+    text-align: center;
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+  }
+  .postcard-verso .postmark::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid var(--stamp);
+    border-radius: 50%;
+  }
+  .postcard-verso .postmark .pm-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 4px 0;
+  }
+
+  /* NEW elegant typography block (REPLACES the giant script Bonjour) */
+  .postcard-verso .text-block {
+    margin-top: auto;
+    padding-top: 20px;
+  }
+  .postcard-verso .edition {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--coral-deep);
+    margin-bottom: 10px;
+  }
+  .postcard-verso h1.title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(46px, 5.5vw, 64px);
+    line-height: 0.92;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .postcard-verso h1.title em {
+    color: var(--coral);
+    font-style: italic;
+  }
+  .postcard-verso .place {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .postcard-verso .intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    border-top: 1px dashed var(--ink);
+    padding-top: 12px;
+  }
+  .postcard-verso .intro strong { font-weight: 600; color: var(--coral-deep); font-style: italic; }
+
+  /* === EPHEMERA AROUND POSTCARD === */
+  .ephemera {
+    position: absolute;
+    z-index: 4;
+  }
+
+  /* Pinned note (top right) */
+  .note-pinned {
+    top: 30px;
+    right: 5%;
+    width: 180px;
+    background: #EFE4C8;
+    padding: 28px 18px 18px;
+    box-shadow: 0 8px 22px rgba(27,58,82,0.18);
+    transform: rotate(4deg);
+    z-index: 6;
+    border: 1px solid rgba(27,58,82,0.1);
+  }
+  .note-pinned .tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 90px;
+    height: 26px;
+    background: rgba(216, 117, 92, 0.4);
+    border: 1px solid rgba(216, 117, 92, 0.3);
+  }
+  .note-pinned .note-label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    color: var(--coral-deep);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .note-pinned .note-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.35;
+    color: var(--ink);
+    text-align: center;
+  }
+  .note-pinned .note-text strong {
+    font-weight: 700;
+    font-style: normal;
+    display: block;
+    margin: 4px 0 2px;
+  }
+
+  /* Envelope (bottom left) */
+  .envelope-mini {
+    bottom: 40px;
+    left: 4%;
+    width: 220px;
+    height: 130px;
+    background: var(--paper-card);
+    border: 1px solid var(--ink);
+    box-shadow: 0 8px 22px rgba(27,58,82,0.18);
+    transform: rotate(-5deg);
+    padding: 16px 20px;
+    z-index: 6;
+    overflow: hidden;
+  }
+  .envelope-mini::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background:
+      linear-gradient(135deg, transparent 49.5%, var(--shell) 49.5%, var(--shell) 50.5%, transparent 50.5%),
+      linear-gradient(45deg, transparent 49.5%, var(--shell) 49.5%, var(--shell) 50.5%, transparent 50.5%);
+    background-size: 20px 20px;
+    background-repeat: repeat-x;
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .envelope-mini .seal {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    background: var(--stamp);
+    border-radius: 50%;
+    color: var(--paper-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+  .envelope-mini .env-text {
+    position: relative;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-top: 36px;
+  }
+  .envelope-mini .env-text .small {
+    font-family: 'Cormorant SC', serif;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* Tag with string (right side) */
+  .tag-string {
+    top: 50%;
+    right: 2%;
+    width: 90px;
+    transform: rotate(8deg);
+    z-index: 6;
+  }
+  .tag-string .string {
+    width: 1px;
+    height: 50px;
+    background: var(--ink-soft);
+    margin: 0 auto;
+    opacity: 0.7;
+  }
+  .tag-string .tag {
+    width: 90px;
+    height: 60px;
+    background: var(--sand);
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    padding: 12px 8px;
+    text-align: center;
+    box-shadow: 0 6px 14px rgba(27,58,82,0.14);
+    position: relative;
+  }
+  .tag-string .tag::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+  .tag-string .tag .num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--ink);
+    margin-top: 6px;
+  }
+  .tag-string .tag .yr {
+    font-family: 'Cormorant SC', serif;
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  /* Mini polaroid corner (bottom right) */
+  .mini-pol {
+    bottom: 80px;
+    right: 14%;
+    width: 110px;
+    background: var(--paper-card);
+    padding: 8px 8px 22px;
+    box-shadow: 0 10px 24px rgba(27,58,82,0.2);
+    transform: rotate(7deg);
+    z-index: 4;
+  }
+  .mini-pol .photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background-image: url('da_devanture.jpeg');
+    background-size: cover;
+    background-position: center;
+  }
+  .mini-pol .pol-cap {
+    text-align: center;
+    margin-top: 6px;
+    font-family: 'Petit Formal Script', cursive;
+    font-size: 12px;
+    color: var(--ink);
+    opacity: 0.75;
+  }
+
+  /* Wax-like accent stamp */
+  .wax-stamp {
+    top: 12%;
+    left: 4%;
+    width: 70px;
+    height: 70px;
+    background: var(--stamp);
+    border-radius: 50%;
+    color: var(--paper-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-15deg);
+    box-shadow: 0 4px 10px rgba(181,61,61,0.4), inset -2px -2px 6px rgba(0,0,0,0.18);
+    z-index: 6;
+  }
+  .wax-stamp .core {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+  }
+  .wax-stamp .sub {
+    font-family: 'Cormorant SC', serif;
+    font-size: 7px;
+    letter-spacing: 0.22em;
+    margin-top: 3px;
+  }
+
+  /* ===== Le mot du verso (REDONE — no giant Petit Formal title) ===== */
+  .verso {
+    text-align: center;
+    padding: 110px 24px 90px;
+    border-top: 1px solid var(--hairline);
+  }
+  .verso .kicker {
+    font-family: 'Cormorant SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--coral-deep);
+    margin-bottom: 22px;
+  }
+  .verso h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 36px;
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .verso h2 em { color: var(--coral); }
+  .verso .message {
+    max-width: 620px;
+    margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.7;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .verso .signature {
+    margin-top: 40px;
+    font-family: 'Petit Formal Script', cursive;
+    font-size: 28px;
+    color: var(--coral);
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+
+  .divider-wave {
+    text-align: center;
+    color: var(--sea);
+    font-size: 22px;
+    letter-spacing: 0.5em;
+    opacity: 0.6;
+    margin: 0 auto;
+  }
+
+  /* ============================================== */
+  /* ===== LA CARTE DU JOUR (DENSIFIED) ===== */
+  /* ============================================== */
+  .carte-section {
+    padding: 100px 24px 80px;
+  }
+  .carte-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 60px;
+  }
+  .carte-head .top-line {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--coral-deep);
+    margin-bottom: 16px;
+  }
+  .carte-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .carte-head h2 em {
+    font-style: italic;
+    color: var(--coral);
+  }
+  .carte-head .desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* Layout: side panel — postcard — side panel */
+  .carte-layout {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2.2fr 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  /* Side panel base */
+  .side-panel {
+    background: var(--paper-card);
+    border: 1px solid var(--ink);
+    padding: 24px 22px;
+    border-radius: 3px;
+    text-align: center;
+    box-shadow: 0 8px 22px rgba(27,58,82,0.12);
+  }
+  .side-panel .badge {
+    display: inline-block;
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--paper-card);
+    background: var(--coral);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .side-panel.left { transform: rotate(-1.5deg); }
+  .side-panel.right { transform: rotate(1.5deg); }
+
+  .coup-de-coeur .cdc-illust {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 14px;
+    background: var(--sage, #c9d8a8);
+    border-radius: 50%;
+    border: 1px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .coup-de-coeur h4 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .coup-de-coeur h4 em { color: var(--coral); }
+  .coup-de-coeur p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .mini-map .map-svg {
+    width: 100%;
+    height: 130px;
+    margin-bottom: 12px;
+  }
+  .mini-map h4 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .mini-map p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .mini-map p strong { color: var(--ink); font-weight: 600; }
+
+  /* Carte postcard - WIDER, with 2 columns */
+  .menu-postcard {
+    background: var(--paper-card);
+    box-shadow:
+      0 1px 3px rgba(27,58,82,0.1),
+      0 18px 44px rgba(27,58,82,0.18);
+    padding: 50px 50px 40px;
+    transform: rotate(0.5deg);
+    position: relative;
+    border-radius: 3px;
+  }
+  .menu-postcard::before {
+    content: '';
+    position: absolute;
+    inset: 13px;
+    border: 1px solid rgba(27,58,82,0.16);
+    pointer-events: none;
+  }
+  .menu-tape {
+    position: absolute;
+    width: 100px;
+    height: 28px;
+    background: rgba(216, 117, 92, 0.35);
+    border: 1px solid rgba(216, 117, 92, 0.25);
+    z-index: 3;
+  }
+  .menu-tape.t1 { top: -16px; left: 30px; transform: rotate(-7deg); }
+  .menu-tape.t2 { top: -16px; right: 40px; transform: rotate(6deg); }
+
+  .menu-header {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed var(--ink);
+  }
+  .menu-header .top-line {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--coral-deep);
+  }
+  .menu-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(40px, 4.5vw, 56px);
+    color: var(--ink);
+    line-height: 1;
+    margin: 6px 0;
+  }
+  .menu-header h3 em { color: var(--coral); }
+  .menu-header .date {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  /* Two column menu grid */
+  .menu-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 36px;
+  }
+  .menu-cols .col {
+    border-top: 1px solid rgba(27,58,82,0.1);
+  }
+  .menu-row {
+    display: grid;
+    grid-template-columns: 38px 1fr auto;
+    gap: 12px;
+    padding: 12px 0;
+    align-items: center;
+    border-bottom: 1px dotted rgba(27,58,82,0.25);
+  }
+  .menu-row:last-child { border-bottom: none; }
+  .menu-row .ico {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .menu-row .name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .menu-row .name em {
+    font-style: italic;
+    color: var(--coral);
+    font-weight: 400;
+    font-size: 14px;
+    display: block;
+    margin-top: 2px;
+  }
+  .menu-row .origin {
+    font-family: 'Cormorant SC', serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    text-align: right;
+    line-height: 1.2;
+  }
+
+  .menu-bottom {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--ink);
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--coral-deep);
+  }
+  .menu-bottom .arrow {
+    font-family: 'Petit Formal Script', cursive;
+    color: var(--ink);
+    font-size: 22px;
+    margin-right: 4px;
+  }
+
+  /* TOPPINGS STRIP - new section under carte */
+  .toppings-strip {
+    max-width: 1100px;
+    margin: 70px auto 0;
+    background: var(--paper-deep);
+    border: 1px solid var(--ink);
+    padding: 36px 40px 32px;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .toppings-strip h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .toppings-strip h3 em { color: var(--coral); }
+  .toppings-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 30px;
+  }
+  .toppings-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px 20px;
+  }
+  .topping {
+    text-align: center;
+  }
+  .topping .ico {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+  }
+  .topping .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  /* Promise band - 3 promises */
+  .promise-band {
+    max-width: 1100px;
+    margin: 30px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 22px 0;
+  }
+  .promise-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 4px 16px;
+    border-right: 1px dotted rgba(27,58,82,0.25);
+  }
+  .promise-item:last-child { border-right: none; }
+  .promise-item .star {
+    color: var(--coral);
+    font-size: 18px;
+  }
+  .promise-item .text strong {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    display: block;
+  }
+  .promise-item .text span {
+    font-family: 'Cormorant SC', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+  }
+
+  /* ============================================== */
+  /* ===== POLAROIDS (KEPT FROM v1) ===== */
+  /* ============================================== */
+  .gallery-section {
+    padding: 100px 24px 90px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at center, rgba(168,197,208,0.15) 0%, transparent 70%);
+  }
+  .gallery-section .kicker {
+    font-family: 'Cormorant SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--coral-deep);
+    margin-bottom: 14px;
+  }
+  .gallery-section h2 {
+    font-family: 'Petit Formal Script', cursive;
+    font-size: clamp(48px, 7vw, 80px);
+    color: var(--teal);
+    margin-bottom: 60px;
+    transform: rotate(-1deg);
+  }
+  .polaroids {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .polaroid {
+    width: 220px;
+    background: var(--paper-card);
+    padding: 14px 14px 50px;
+    box-shadow: 0 12px 30px rgba(27,58,82,0.18);
+    position: relative;
+  }
+  .polaroid:nth-child(1) { transform: rotate(-3deg); }
+  .polaroid:nth-child(2) { transform: rotate(2deg) translateY(20px); }
+  .polaroid:nth-child(3) { transform: rotate(-2deg); }
+  .polaroid:nth-child(4) { transform: rotate(3deg) translateY(15px); }
+  .polaroid .photo { width: 100%; aspect-ratio: 1; }
+  .polaroid:nth-child(1) .photo { background: linear-gradient(135deg, var(--shell), var(--coral)); }
+  .polaroid:nth-child(2) .photo { background-image: url('da_devanture.jpeg'); background-size: cover; background-position: center; }
+  .polaroid:nth-child(3) .photo { background: linear-gradient(160deg, var(--sea), var(--teal)); }
+  .polaroid:nth-child(4) .photo { background: linear-gradient(135deg, var(--sand), var(--coral)); }
+  .polaroid .caption {
+    text-align: center;
+    margin-top: 12px;
+    font-family: 'Petit Formal Script', cursive;
+    color: var(--ink);
+    font-size: 18px;
+    opacity: 0.8;
+  }
+
+  /* ============================================== */
+  /* ===== UN CORNET, UNE SIGNATURE (KEPT) ===== */
+  /* ============================================== */
+  .mof-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 80px 24px;
+  }
+  .mof-stamp {
+    width: 280px;
+    height: 280px;
+    border: 4px double var(--teal);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--teal);
+    text-align: center;
+    transform: rotate(-8deg);
+    position: relative;
+    background: rgba(244,233,212,0.5);
+  }
+  .mof-stamp::before {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 1px solid var(--teal);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .mof-stamp .top-text,
+  .mof-stamp .bottom-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+  }
+  .mof-stamp .top-text { top: 32px; }
+  .mof-stamp .bottom-text { bottom: 32px; }
+  .mof-stamp .mof-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+  .mof-stamp .mof-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+  .mof-text-block .kicker {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--coral-deep);
+  }
+  .mof-text-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 56px;
+    color: var(--teal);
+    line-height: 1.05;
+    margin: 12px 0 24px;
+  }
+  .mof-text-block p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .mof-text-block p em { color: var(--coral); font-style: italic; }
+
+  /* ============================================== */
+  /* ===== ENVELOPPE / ADRESSE (KEPT) ===== */
+  /* ============================================== */
+  .envelope {
+    background: var(--paper-card);
+    width: min(820px, 95vw);
+    margin: 80px auto;
+    padding: 48px 56px;
+    box-shadow: 0 16px 40px rgba(27,58,82,0.15);
+    position: relative;
+    border: 1px solid rgba(27,58,82,0.1);
+    transform: rotate(-0.5deg);
+  }
+  .envelope::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background:
+      linear-gradient(135deg, transparent 49.5%, var(--shell) 49.5%, var(--shell) 50.5%, transparent 50.5%),
+      linear-gradient(45deg, transparent 49.5%, var(--shell) 49.5%, var(--shell) 50.5%, transparent 50.5%);
+    background-size: 30px 30px;
+    background-repeat: repeat-x;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .envelope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .envelope-block h4 {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--coral-deep);
+    margin-bottom: 10px;
+  }
+  .envelope-block .big {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--teal);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .envelope-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .envelope-stamp {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 90px;
+    height: 110px;
+    background: var(--shell);
+    border: 2px solid var(--paper-card);
+    box-shadow: 0 0 0 1px var(--ink);
+    padding: 6px;
+    transform: rotate(4deg);
+  }
+  .envelope-stamp-inner {
+    width: 100%;
+    height: 100%;
+    background: var(--teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper-card);
+    font-family: 'Cormorant SC', serif;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .envelope-stamp-inner .v { font-size: 18px; font-family: 'Playfair Display', serif; font-style: italic; margin: 4px 0; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 60px 24px 40px;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+  footer .signature-line {
+    font-family: 'Petit Formal Script', cursive;
+    font-size: 28px;
+    color: var(--coral);
+    margin-bottom: 12px;
+  }
+  footer .small {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1100px) {
+    .carte-layout { grid-template-columns: 1fr; gap: 24px; }
+    .side-panel.left, .side-panel.right { transform: rotate(0); max-width: 480px; margin: 0 auto; }
+  }
+  @media (max-width: 900px) {
+    nav.main { grid-template-columns: 1fr; padding: 14px 18px; text-align: center; }
+    nav.main .nav-left, nav.main .nav-right { display: none; }
+    .topbar { font-size: 10px; }
+    .topbar span { margin: 0 6px; }
+    .moodboard { min-height: 580px; }
+    .postcard { grid-template-columns: 1fr; padding: 26px; }
+    .postcard-illust { min-height: 220px; }
+    .ephemera.note-pinned { width: 140px; right: 2%; top: 8px; }
+    .envelope-mini { width: 170px; bottom: 8px; left: 2%; }
+    .tag-string, .mini-pol, .wax-stamp { display: none; }
+    .menu-cols { grid-template-columns: 1fr; }
+    .toppings-grid { grid-template-columns: repeat(3, 1fr); }
+    .promise-band { grid-template-columns: 1fr; gap: 12px; }
+    .promise-item { border-right: none; border-bottom: 1px dotted rgba(27,58,82,0.25); padding-bottom: 12px; }
+    .promise-item:last-child { border-bottom: none; }
+    .mof-section { grid-template-columns: 1fr; gap: 50px; }
+    .envelope-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>★ Glacier artisanal</span>
+  <span class="o">·</span>
+  <span>Saison 2026</span>
+  <span class="o">·</span>
+  <span>Mi-mai → fin septembre</span>
+  <span class="o">·</span>
+  <span>14h — 22h</span>
+  <span class="o">·</span>
+  <span>Quai K18, Morgat ★</span>
+</div>
+
+<!-- NAV -->
+<nav class="main">
+  <div class="nav-left">
+    <a href="#carte">La Carte</a>
+    <a href="#souvenirs">Souvenirs</a>
+    <a href="#geste">Le Geste</a>
+  </div>
+  <a class="logo" href="#">La Fenêtre</a>
+  <div class="nav-right">
+    <a href="#adresse">Adresse</a>
+    <a href="https://instagram.com" target="_blank">Instagram ↗</a>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- ===== HERO MOODBOARD (REDONE) ===== -->
+<!-- ============================================ -->
+<section class="hero-moodboard">
+  <div class="moodboard">
+
+    <!-- Decorative ornaments scattered -->
+    <span class="ornament o-tl">✦</span>
+    <span class="ornament o-tr">✦</span>
+    <span class="ornament o-bl">✦</span>
+    <span class="ornament o-br">✦</span>
+
+    <!-- Wax-like accent stamp (top left) -->
+    <div class="ephemera wax-stamp">
+      <div class="core">L F</div>
+      <div class="sub">EST. 26</div>
+    </div>
+
+    <!-- Pinned note (top right) -->
+    <div class="ephemera note-pinned">
+      <div class="tape"></div>
+      <div class="note-label">— Horaires —</div>
+      <div class="note-text">
+        Ouvert tous les jours
+        <strong>14h — 22h</strong>
+        <span style="font-size:13px; opacity:0.7;">Mi-mai → fin sept.</span>
+      </div>
+    </div>
+
+    <!-- Tag with string (right side) -->
+    <div class="ephemera tag-string">
+      <div class="string"></div>
+      <div class="tag">
+        <div class="num">N°1</div>
+        <div class="yr">ÉTÉ 2026</div>
+      </div>
+    </div>
+
+    <!-- Mini polaroid corner (bottom right) -->
+    <div class="ephemera mini-pol">
+      <div class="photo"></div>
+      <div class="pol-cap">la fenêtre</div>
+    </div>
+
+    <!-- Envelope (bottom left) -->
+    <div class="ephemera envelope-mini">
+      <div class="seal">L.F</div>
+      <div class="env-text">
+        <span class="small">À l'attention</span>
+        <em>du voyageur attentif</em>
+        <span class="small" style="margin-top:6px;">Quai K18 · Morgat</span>
+      </div>
+    </div>
+
+    <!-- THE POSTCARD (centerpiece) - elegant typography, no childish script -->
+    <div class="postcard">
+
+      <!-- RECTO illustrated -->
+      <div class="postcard-illust">
+        <div class="sun"></div>
+
+        <!-- Sun rays decorative -->
+        <svg class="sun-rays" viewBox="0 0 78 78">
+          <g stroke="#D8755C" stroke-width="1.2" fill="none" opacity="0.5">
+            <line x1="39" y1="-10" x2="39" y2="-2"/>
+            <line x1="39" y1="80" x2="39" y2="88"/>
+            <line x1="-10" y1="39" x2="-2" y2="39"/>
+            <line x1="80" y1="39" x2="88" y2="39"/>
+          </g>
+        </svg>
+
+        <span class="seagull s1">~v~</span>
+        <span class="seagull s2">~v~</span>
+
+        <!-- Lighthouse SVG (refined) -->
+        <svg class="lighthouse-svg" width="50" height="100" viewBox="0 0 50 100">
+          <rect x="20" y="30" width="10" height="50" fill="#FBF4E0" stroke="#1B3A52" stroke-width="1.2"/>
+          <rect x="18" y="40" width="14" height="6" fill="#D8755C"/>
+          <rect x="18" y="55" width="14" height="6" fill="#D8755C"/>
+          <rect x="18" y="78" width="14" height="3" fill="#1B3A52"/>
+          <polygon points="15,30 35,30 25,18" fill="#1B3A52"/>
+          <circle cx="25" cy="22" r="3" fill="#F2C8C8"/>
+          <line x1="25" y1="14" x2="25" y2="11" stroke="#1B3A52" stroke-width="1"/>
+          <rect x="10" y="80" width="30" height="6" fill="#1B3A52"/>
+        </svg>
+
+        <!-- Wave SVG -->
+        <svg class="wave-svg" viewBox="0 0 400 20" preserveAspectRatio="none" width="100%" height="20">
+          <path d="M0,10 Q25,2 50,10 T100,10 T150,10 T200,10 T250,10 T300,10 T350,10 T400,10" stroke="#1B3A52" stroke-width="1" fill="none"/>
+          <path d="M0,15 Q25,7 50,15 T100,15 T150,15 T200,15 T250,15 T300,15 T350,15 T400,15" stroke="#1B3A52" stroke-width="0.7" fill="none" opacity="0.6"/>
+        </svg>
+
+        <!-- Cone (refined - more elegant) -->
+        <svg class="cone-svg" width="64" height="105" viewBox="0 0 64 105">
+          <circle cx="32" cy="22" r="14" fill="#F2C8C8" stroke="#1B3A52" stroke-width="1.2"/>
+          <circle cx="22" cy="32" r="13" fill="#D8755C" stroke="#1B3A52" stroke-width="1.2"/>
+          <circle cx="42" cy="34" r="12" fill="#FBF4E0" stroke="#1B3A52" stroke-width="1.2"/>
+          <polygon points="14,42 50,42 32,90" fill="#D9C5A0" stroke="#1B3A52" stroke-width="1.2"/>
+          <line x1="20" y1="50" x2="40" y2="80" stroke="#1B3A52" stroke-width="0.5"/>
+          <line x1="44" y1="50" x2="24" y2="80" stroke="#1B3A52" stroke-width="0.5"/>
+        </svg>
+
+        <div class="label-bottom">— Port de Morgat · Crozon —</div>
+      </div>
+
+      <!-- VERSO (REDONE: refined typography, no giant pink script) -->
+      <div class="postcard-verso">
+
+        <div class="stamp">
+          <div class="stamp-inner">
+            <span>République</span>
+            <span class="core">LF</span>
+            <span>0,89 €</span>
+          </div>
+        </div>
+
+        <div class="postmark">
+          <div class="pm-date">3 · V · 26</div>
+          <div>CROZON</div>
+          <div>— MORGAT —</div>
+        </div>
+
+        <div class="text-block">
+          <div class="edition">— Édition n°1 · Été 2026 —</div>
+          <h1 class="title">La <em>Fenêtre</em></h1>
+          <span class="place">— Crozon, Bretagne —</span>
+          <p class="intro">
+            Glacier artisanal du Quai K18. Une fenêtre ouverte sur le port de Morgat, mi-mai à fin septembre. Huit parfums signés <strong>Meilleur Ouvrier de France</strong>, et les toppings sans limite.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Le mot du verso (REDONE: no giant Petit Formal title) ===== -->
+<section class="verso">
+  <div class="kicker">— Le verso de la carte —</div>
+  <h2 class="display">On a ouvert la <em>fenêtre.</em></h2>
+  <p class="message">
+    Il fait beau, le port s'est rempli, et la fraise est mûre. On vous a préparé huit parfums, choisis avec lenteur, signés d'un Meilleur Ouvrier de France. Toppings sans limite. Et des chaises roses pour s'asseoir.
+    <br><br>
+    Passez nous voir. Du 14 mai au 30 septembre.
+  </p>
+  <div class="signature">— La Fenêtre</div>
+</section>
+
+<div class="divider-wave">~ ~ ~ ~ ~</div>
+
+<!-- ============================================ -->
+<!-- ===== LA CARTE DU JOUR (DENSIFIED) ===== -->
+<!-- ============================================ -->
+<section class="carte-section" id="carte">
+  <div class="carte-head">
+    <div class="top-line">— Édition limitée n°1 —</div>
+    <h2 class="display">La <em>carte</em> du jour</h2>
+    <p class="desc">Mise à jour selon les arrivages et la saison. Toutes nos préparations sont conçues par un Meilleur Ouvrier de France, et les toppings sont faits maison.</p>
+  </div>
+
+  <div class="carte-layout">
+
+    <!-- LEFT side panel: coup de cœur -->
+    <aside class="side-panel left coup-de-coeur">
+      <div class="badge">★ Coup de cœur ★</div>
+      <div class="cdc-illust">
+        <svg width="50" height="50" viewBox="0 0 50 50">
+          <ellipse cx="25" cy="24" rx="9" ry="14" fill="none" stroke="#1B3A52" stroke-width="1"/>
+          <ellipse cx="22" cy="23" rx="4" ry="8" fill="none" stroke="#1B3A52" stroke-width="0.6"/>
+          <ellipse cx="28" cy="23" rx="4" ry="8" fill="none" stroke="#1B3A52" stroke-width="0.6"/>
+          <line x1="25" y1="10" x2="25" y2="6" stroke="#1B3A52" stroke-width="0.7"/>
+        </svg>
+      </div>
+      <h4 class="display">Pistache <em>de Sicile</em></h4>
+      <p>Cette semaine on craque pour la pistache de Bronte, broyée maison à froid, ce vert sombre tout naturel.</p>
+    </aside>
+
+    <!-- CENTER: wider postcard menu with 2 columns -->
+    <div class="menu-postcard">
+      <span class="menu-tape t1"></span>
+      <span class="menu-tape t2"></span>
+
+      <div class="menu-header">
+        <div class="top-line">— Édition n°1 · 2026 —</div>
+        <h3>La carte <em>du jour</em></h3>
+        <div class="date">samedi 3 mai 2026</div>
+      </div>
+
+      <div class="menu-cols">
+
+        <!-- Left column: 4 flavors -->
+        <div class="col">
+          <div class="menu-row">
+            <div class="ico">
+              <svg width="22" height="22" viewBox="0 0 22 22">
+                <path d="M11 4 Q8 3, 8 8 L8 14 Q8 18, 11 18 Q14 18, 14 14 L14 8 Q14 3, 11 4 Z" fill="none" stroke="#1B3A52" stroke-width="0.8"/>
+                <line x1="9" y1="9" x2="13" y2="9" stroke="#1B3A52" stroke-width="0.4"/>
+                <line x1="9" y1="13" x2="13" y2="13" stroke="#1B3A52" stroke-width="0.4"/>
+              </svg>
+            </div>
+            <div class="name">Vanille<em>de Madagascar</em></div>
+            <div class="origin">Sava<br>IGP</div>
+          </div>
+
+          <div class="menu-row">
+            <div class="ico">
+              <svg width="22" height="22" viewBox="0 0 22 22">
+                <path d="M11 5 Q6 5, 6 12 Q6 17, 11 18 Q16 17, 16 12 Q16 5, 11 5 Z" fill="none" stroke="#1B3A52" stroke-width="0.8"/>
+                <path d="M10 4 L12 4 L11 6 Z" fill="#1B3A52"/>
+                <circle cx="9" cy="10" r="0.5" fill="#1B3A52"/>
+                <circle cx="13" cy="10" r="0.5" fill="#1B3A52"/>
+                <circle cx="11" cy="14" r="0.5" fill="#1B3A52"/>
+              </svg>
+            </div>
+            <div class="name">Fraise<em>de Plougastel</em></div>
+            <div class="origin">Bretagne</div>
+          </div>
+
+          <div class="menu-row">
+            <div class="ico">
+              <svg width="22" height="22" viewBox="0 0 22 22">
+                <ellipse cx="11" cy="12" rx="6" ry="7" fill="none" stroke="#1B3A52" stroke-width="0.8"/>
+                <path d="M10 4 Q9 2, 11 1 L11 5" fill="#1B3A52"/>
+              </svg>
+            </div>
+            <div class="name">Citron<em>de Menton</em></div>
+            <div class="origin">Côte d'Azur<br>IGP</div>
+          </div>
+
+          <div class="menu-row">
+            <div class="ico">
+              <svg width="22" height="22" viewBox="0 0 22 22">
+                <rect x="6" y="6" width="10" height="10" fill="#1B3A52"/>
+                <line x1="6" y1="9" x2="16" y2="9" stroke="#FBF4E0" stroke-width="0.4"/>
+                <line x1="6" y1="12" x2="16" y2="12" stroke="#FBF4E0" stroke-width="0.4"/>
+                <line x1="9" y1="6" x2="9" y2="16" stroke="#FBF4E0" stroke-width="0.4"/>
+                <line x1="13" y1="6" x2="13" y2="16" stroke="#FBF4E0" stroke-width="0.4"/>
+              </svg>
+            </div>
+            <div class="name">Chocolat<em>noir 70%</em></div>
+            <div class="origin">Pérou</div>
+          </div>
+        </div>
+
+        <!-- Right column: 4 flavors -->
+        <div class="col">
+          <div class="menu-row">
+            <div class="ico">
+              <svg width="22" height="22" viewBox="0 0 22 22">
+                <ellipse cx="11" cy="12" rx="4" ry="6" fill="none" stroke="#1B3A52" stroke-width="0.8"/>
+                <ellipse cx="9" cy="11" rx="2" ry="3.5" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <ellipse cx="13" cy="11" rx="2" ry="3.5" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <line x1="11" y1="6" x2="11" y2="3" stroke="#1B3A52" stroke-width="0.6"/>
+              </svg>
+            </div>
+            <div class="name">Pistache<em>de Sicile</em></div>
+            <div class="origin">Bronte<br>DOP</div>
+          </div>
+
+          <div class="menu-row">
+            <div class="ico">
+              <svg width="22" height="22" viewBox="0 0 22 22">
+                <path d="M5 9 Q5 5, 9 5 L13 5 Q17 5, 17 9 Q17 16, 11 16 Q5 16, 5 9 Z" fill="none" stroke="#1B3A52" stroke-width="0.8"/>
+                <path d="M7 10 Q7 7, 9 7 L13 7 Q15 7, 15 10" fill="none" stroke="#1B3A52" stroke-width="0.4"/>
+              </svg>
+            </div>
+            <div class="name">Caramel<em>beurre salé</em></div>
+            <div class="origin">Guérande<br>IGP</div>
+          </div>
+
+          <div class="menu-row">
+            <div class="ico">
+              <svg width="22" height="22" viewBox="0 0 22 22">
+                <circle cx="9" cy="10" r="1.6" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <circle cx="11" cy="9" r="1.6" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <circle cx="13" cy="10" r="1.6" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <circle cx="9" cy="13" r="1.6" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <circle cx="11" cy="14" r="1.6" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <circle cx="13" cy="13" r="1.6" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <line x1="11" y1="6" x2="11" y2="4" stroke="#1B3A52" stroke-width="0.4"/>
+              </svg>
+            </div>
+            <div class="name">Framboise<em>de Bretagne</em></div>
+            <div class="origin">Finistère</div>
+          </div>
+
+          <div class="menu-row">
+            <div class="ico">
+              <svg width="22" height="22" viewBox="0 0 22 22">
+                <ellipse cx="11" cy="13" rx="4.5" ry="5.5" fill="none" stroke="#1B3A52" stroke-width="0.8"/>
+                <path d="M7 11 Q7 5, 11 5 Q15 5, 15 11" fill="none" stroke="#1B3A52" stroke-width="0.5"/>
+                <line x1="11" y1="5" x2="11" y2="13" stroke="#1B3A52" stroke-width="0.3"/>
+              </svg>
+            </div>
+            <div class="name">Noisette<em>du Piémont</em></div>
+            <div class="origin">Tonda<br>IGP</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="menu-bottom">
+        <span class="arrow">↳</span> toppings sans limite, fait maison avec passion.
+      </div>
+    </div>
+
+    <!-- RIGHT side panel: mini map -->
+    <aside class="side-panel right mini-map">
+      <div class="badge">★ Le port ★</div>
+      <svg class="map-svg" viewBox="0 0 130 100">
+        <!-- Sea -->
+        <rect x="0" y="0" width="130" height="60" fill="#A8C5D0" opacity="0.55"/>
+        <!-- Land -->
+        <path d="M 0 60 Q 20 55, 40 58 L 60 65 Q 80 60, 100 62 Q 115 65, 130 60 L 130 100 L 0 100 Z" fill="#D9C5A0" opacity="0.7"/>
+        <!-- Coast detail -->
+        <path d="M 0 60 Q 20 55, 40 58 L 60 65 Q 80 60, 100 62 Q 115 65, 130 60" stroke="#1B3A52" stroke-width="0.7" fill="none"/>
+        <!-- Sea details -->
+        <path d="M 10 25 q 5 -2 10 0" stroke="#1B3A52" stroke-width="0.4" fill="none" opacity="0.5"/>
+        <path d="M 90 18 q 5 -2 10 0" stroke="#1B3A52" stroke-width="0.4" fill="none" opacity="0.5"/>
+        <path d="M 50 38 q 4 -2 8 0" stroke="#1B3A52" stroke-width="0.4" fill="none" opacity="0.5"/>
+        <!-- Pin location -->
+        <g transform="translate(72, 60)">
+          <circle r="3" fill="#B53D3D"/>
+          <circle r="6" fill="none" stroke="#B53D3D" stroke-width="0.7" opacity="0.5"/>
+        </g>
+        <!-- Compass -->
+        <g transform="translate(115, 14)">
+          <circle r="6" fill="none" stroke="#1B3A52" stroke-width="0.4" opacity="0.6"/>
+          <text x="0" y="-7" font-family="serif" font-size="6" fill="#1B3A52" text-anchor="middle">N</text>
+          <line x1="0" y1="-4" x2="0" y2="4" stroke="#B53D3D" stroke-width="0.5"/>
+        </g>
+        <!-- Place name -->
+        <text x="72" y="76" font-family="'Cormorant SC', serif" font-size="6" fill="#1B3A52" text-anchor="middle" letter-spacing="1">MORGAT</text>
+      </svg>
+      <h4 class="display">À la fenêtre</h4>
+      <p><strong>Quai K18 · Port de Morgat</strong><br>
+      29160 Crozon, Finistère.<br>
+      <em>Face à la plage.</em></p>
+    </aside>
+
+  </div>
+
+  <!-- TOPPINGS STRIP - new section -->
+  <div class="toppings-strip">
+    <h3 class="display">Avec quels <em>toppings ?</em></h3>
+    <p>Tout est fait maison, et oui — c'est sans limite.</p>
+    <div class="toppings-grid">
+      <div class="topping">
+        <div class="ico">
+          <svg width="28" height="28" viewBox="0 0 28 28">
+            <path d="M6 12 Q6 8, 14 8 Q22 8, 22 12 L22 18 Q22 22, 14 22 Q6 22, 6 18 Z" fill="#1B3A52"/>
+            <path d="M14 8 Q12 4, 14 2 Q16 4, 14 8" fill="#1B3A52"/>
+          </svg>
+        </div>
+        <div class="name">Sauce chocolat<br>noir intense</div>
+      </div>
+      <div class="topping">
+        <div class="ico">
+          <svg width="28" height="28" viewBox="0 0 28 28">
+            <ellipse cx="10" cy="13" rx="5" ry="4" fill="none" stroke="#1B3A52" stroke-width="1"/>
+            <ellipse cx="16" cy="11" rx="5" ry="4" fill="none" stroke="#1B3A52" stroke-width="1"/>
+            <ellipse cx="14" cy="16" rx="5" ry="4" fill="none" stroke="#1B3A52" stroke-width="1"/>
+            <ellipse cx="20" cy="14" rx="4" ry="3" fill="none" stroke="#1B3A52" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="name">Chantilly<br>maison</div>
+      </div>
+      <div class="topping">
+        <div class="ico">
+          <svg width="28" height="28" viewBox="0 0 28 28">
+            <circle cx="8" cy="10" r="1.5" fill="#1B3A52"/>
+            <circle cx="13" cy="8" r="1.5" fill="#1B3A52"/>
+            <circle cx="18" cy="10" r="1.5" fill="#1B3A52"/>
+            <circle cx="20" cy="14" r="1.5" fill="#1B3A52"/>
+            <circle cx="15" cy="16" r="1.5" fill="#1B3A52"/>
+            <circle cx="10" cy="14" r="1.5" fill="#1B3A52"/>
+            <circle cx="8" cy="18" r="1.5" fill="#1B3A52"/>
+            <circle cx="14" cy="20" r="1.5" fill="#1B3A52"/>
+            <circle cx="19" cy="19" r="1.5" fill="#1B3A52"/>
+          </svg>
+        </div>
+        <div class="name">Granola<br>breton</div>
+      </div>
+      <div class="topping">
+        <div class="ico">
+          <svg width="28" height="28" viewBox="0 0 28 28">
+            <circle cx="9" cy="10" r="3" fill="none" stroke="#1B3A52" stroke-width="1"/>
+            <path d="M9 7 L8 5" stroke="#1B3A52" stroke-width="0.7"/>
+            <circle cx="17" cy="9" r="2.5" fill="none" stroke="#1B3A52" stroke-width="1"/>
+            <path d="M17 6.5 L18 5" stroke="#1B3A52" stroke-width="0.7"/>
+            <ellipse cx="13" cy="17" rx="3" ry="3.5" fill="none" stroke="#1B3A52" stroke-width="1"/>
+            <line x1="13" y1="13.5" x2="13" y2="12" stroke="#1B3A52" stroke-width="0.6"/>
+            <ellipse cx="20" cy="18" rx="2.5" ry="3" fill="none" stroke="#1B3A52" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="name">Fruits frais<br>de saison</div>
+      </div>
+      <div class="topping">
+        <div class="ico">
+          <svg width="28" height="28" viewBox="0 0 28 28">
+            <path d="M7 18 Q7 11, 14 11 Q21 11, 21 18 Q14 22, 7 18 Z" fill="#D8755C"/>
+            <path d="M9 14 Q9 9, 14 9 Q19 9, 19 14" fill="none" stroke="#1B3A52" stroke-width="0.7"/>
+          </svg>
+        </div>
+        <div class="name">Caramel<br>beurre salé</div>
+      </div>
+      <div class="topping">
+        <div class="ico">
+          <svg width="28" height="28" viewBox="0 0 28 28">
+            <ellipse cx="14" cy="15" rx="3.5" ry="4" fill="none" stroke="#1B3A52" stroke-width="0.9"/>
+            <path d="M11 13 Q10 9, 14 8 Q18 9, 17 13" fill="none" stroke="#1B3A52" stroke-width="0.7"/>
+            <line x1="14" y1="8" x2="14" y2="15" stroke="#1B3A52" stroke-width="0.4"/>
+            <ellipse cx="22" cy="11" rx="2" ry="2.5" fill="none" stroke="#1B3A52" stroke-width="0.7"/>
+          </svg>
+        </div>
+        <div class="name">Éclats<br>de noisette</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Promise band - 3 promises -->
+  <div class="promise-band">
+    <div class="promise-item">
+      <span class="star">★</span>
+      <div class="text">
+        <strong>Sans limite</strong>
+        <span>— Toppings illimités —</span>
+      </div>
+    </div>
+    <div class="promise-item">
+      <span class="star">★</span>
+      <div class="text">
+        <strong>Fait maison</strong>
+        <span>— Tout préparé sur place —</span>
+      </div>
+    </div>
+    <div class="promise-item">
+      <span class="star">★</span>
+      <div class="text">
+        <strong>Signé MOF</strong>
+        <span>— Meilleur Ouvrier de France —</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wave">~ ~ ~ ~ ~</div>
+
+<!-- ============================================ -->
+<!-- ===== POLAROIDS (KEPT EXACTLY) ===== -->
+<!-- ============================================ -->
+<section class="gallery-section" id="souvenirs">
+  <div class="kicker">— Carnet d'images —</div>
+  <h2>Quelques souvenirs.</h2>
+  <div class="polaroids">
+    <div class="polaroid">
+      <div class="photo"></div>
+      <div class="caption">la fraise</div>
+    </div>
+    <div class="polaroid">
+      <div class="photo"></div>
+      <div class="caption">la fenêtre</div>
+    </div>
+    <div class="polaroid">
+      <div class="photo"></div>
+      <div class="caption">le port, 19h</div>
+    </div>
+    <div class="polaroid">
+      <div class="photo"></div>
+      <div class="caption">caramel</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ===== UN CORNET, UNE SIGNATURE (KEPT) ===== -->
+<!-- ============================================ -->
+<section class="mof-section" id="geste">
+  <div class="mof-stamp">
+    <div class="top-text">★ MEILLEUR OUVRIER DE FRANCE ★</div>
+    <div>
+      <div class="mof-text">MOF</div>
+      <div class="mof-sub">Gérard Cabiron</div>
+    </div>
+    <div class="bottom-text">— CERTIFIÉ —</div>
+  </div>
+
+  <div class="mof-text-block">
+    <div class="kicker">— Le geste —</div>
+    <h2 class="display">Un cornet,<br>une signature.</h2>
+    <p>
+      Toutes nos glaces sont conçues par un <em>Meilleur Ouvrier de France</em>. Un titre qui ne se gagne qu'une fois, et qui se mérite chaque jour à la cuillère.
+    </p>
+    <p>
+      Le sucre n'est pas masqué. La vanille n'est pas allongée. La pistache vient vraiment de Bronte. <em>On ne triche pas, on ne presse pas.</em>
+    </p>
+  </div>
+</section>
+
+<div class="divider-wave">~ ~ ~ ~ ~</div>
+
+<!-- ============================================ -->
+<!-- ===== ENVELOPPE / ADRESSE (KEPT) ===== -->
+<!-- ============================================ -->
+<div class="envelope" id="adresse">
+  <div class="envelope-stamp">
+    <div class="envelope-stamp-inner">
+      <span>CROZON</span>
+      <span class="v">L.F.</span>
+      <span>2026</span>
+    </div>
+  </div>
+
+  <div class="envelope-block">
+    <h4>— Pour nous trouver —</h4>
+    <div class="big">Quai K18, Port de Morgat</div>
+    <p>29160 Crozon · Finistère<br>Bretagne</p>
+  </div>
+
+  <div class="envelope-grid">
+    <div class="envelope-block">
+      <h4>— Saison —</h4>
+      <p>Mi-mai → fin septembre<br>Tous les jours<br>14h — 22h</p>
+    </div>
+    <div class="envelope-block">
+      <h4>— Nous écrire —</h4>
+      <p>contact@lafenetre.fr<br>@lafenetre.crozon</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="signature-line">— À très vite —</div>
+  <div class="small">La Fenêtre · Édition saisonnière 2026</div>
+</footer>
+
+</body>
+</html>
