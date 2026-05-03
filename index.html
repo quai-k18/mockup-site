@@ -198,6 +198,35 @@
     opacity: 0.6;
   }
 
+  /* Style 5 — Côtier festif */
+  .preview-5 {
+    background: #0A2438;
+  }
+  .preview-5 .p-logo {
+    font-family: 'Sigmar', cursive;
+    font-size: 34px;
+    color: #FFC940;
+    letter-spacing: -0.01em;
+    z-index: 1;
+    text-shadow: 3px 3px 0 #E04B7C;
+  }
+  .preview-5 .p-tag {
+    position: absolute;
+    bottom: 22px;
+    font-size: 13px;
+    font-family: 'Caveat', cursive;
+    color: #6FD4B0;
+    z-index: 1;
+    letter-spacing: 0.04em;
+  }
+  .preview-5::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(255,107,157,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse at bottom left, rgba(111,212,176,0.12) 0%, transparent 60%);
+  }
+
   /* Style 4 — Minimalisme luxe */
   .preview-4 {
     background: #FAF8F4;
@@ -297,7 +326,7 @@
 <header>
   <p class="eyebrow">La Fenêtre · Port de Morgat, Crozon</p>
   <h1>Choisir un style</h1>
-  <p class="subtitle">Quatre propositions visuelles pour votre site web. Cliquez sur chaque style pour le découvrir en détail.</p>
+  <p class="subtitle">Cinq propositions visuelles pour votre site web. Cliquez sur chaque style pour le découvrir en détail.</p>
 </header>
 
 <main>
@@ -351,6 +380,20 @@
       <p class="style-number">Style 4</p>
       <h2 class="card-title">Minimalisme luxe</h2>
       <p class="card-desc">Épuré, aéré, silencieux. Grands espaces blancs, typographie fine, palette os et teal. L'élégance dans la retenue.</p>
+      <span class="card-cta">Voir ce style →</span>
+    </div>
+  </a>
+
+
+  <a class="card" href="index-style5.html">
+    <div class="card-preview preview-5">
+      <span class="p-logo">La Fenêtre</span>
+      <span class="p-tag">glacier artisanal ✦ Morgat</span>
+    </div>
+    <div class="card-body">
+      <p class="style-number">Style 5</p>
+      <h2 class="card-title">Côtier festif</h2>
+      <p class="card-desc">Fond nuit profonde, typographie display percutante, couleurs vives. Une énergie de bord de mer en plein été.</p>
       <span class="card-cta">Voir ce style →</span>
     </div>
   </a>

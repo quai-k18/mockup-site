@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-Static HTML mockup site for **La Fenêtre**, an artisanal ice cream shop (glacier) at Port de Morgat, Crozon, Brittany. Four fully self-contained single-file mockups exploring different visual directions for the same landing page.
+Static HTML mockup site for **La Fenêtre**, an artisanal ice cream shop (glacier) at Port de Morgat, Crozon, Brittany. Five fully self-contained single-file mockups exploring different visual directions for the same landing page.
 
 No build step, no dependencies, no package manager. Open any `.html` file directly in a browser.
 
@@ -18,10 +18,11 @@ Each file is a complete standalone page — all CSS is inline in `<style>` tags,
 | `index-style2-v2.html` | Summery vintage postcard — Cormorant + Playfair, sandy paper texture with SVG noise |
 | `index-style3-v2.html` | Modern bold — Bricolage Grotesque + DM Sans, neon pink accents, playful |
 | `index-style4.html` | Minimal luxury — Tenor Sans + Manrope, bone/teal, fixed nav, high whitespace |
+| `index-style5.html` | Coastal festive — Sigmar + DM Sans + Caveat, midnight background, vivid neon palette |
 
 ## Design constants across styles
 
-All four files share the same brand anchors:
+All five files share the same brand anchors:
 - Brand name: **La Fenêtre**
 - Accent color: `--teal: #0E4F58` (present in every palette)
 - Language: French throughout

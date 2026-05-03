@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Fenêtre — Glaces & bord de mer · Crozon · Coucou de Mouette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=DM+Sans:wght@400;500;600;700;800&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight: #0A2438;
+    --teal: #1E5A7A;
+    --deep-teal: #143B52;
+    --pink: #FF6B9D;
+    --pink-deep: #E04B7C;
+    --yellow: #FFC940;
+    --yellow-deep: #F5B400;
+    --mint: #6FD4B0;
+    --mint-deep: #4FB590;
+    --orange: #FF8B4A;
+    --orange-deep: #E66B30;
+    --lilac: #C8A6FF;
+    --lilac-deep: #A47FD9;
+    --cream: #FFF6E5;
+    --cream-deep: #FFE8B8;
+    --black: #14181C;
+    --white: #FFFFFF;
+    --gray: #D5DEE5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--midnight);
+    color: var(--cream);
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.55;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display { font-family: 'Sigmar', cursive; font-weight: 400; letter-spacing: -0.01em; }
+  .caveat { font-family: 'Caveat', cursive; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  section, header, footer, nav { position: relative; z-index: 2; }
+
+  /* ===== TOP BAR ===== */
+  .topbar {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 10px 0;
+    overflow: hidden;
+    border-bottom: 3px solid var(--black);
+    position: relative;
+    z-index: 50;
+  }
+  .topbar-track {
+    display: flex;
+    gap: 36px;
+    white-space: nowrap;
+    animation: marquee-fast 32s linear infinite;
+    align-items: center;
+    width: max-content;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .topbar-track .star { color: var(--pink-deep); font-size: 16px; }
+  @keyframes marquee-fast {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== NAV ===== */
+  nav.main {
+    background: var(--midnight);
+    padding: 18px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-bottom: 3px solid var(--black);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav.main .nav-left, nav.main .nav-right {
+    display: flex;
+    gap: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  nav.main .nav-right { justify-content: flex-end; }
+  nav.main a {
+    color: var(--cream);
+    transition: color 0.2s;
+  }
+  nav.main a:hover { color: var(--yellow); }
+  nav.main .logo {
+    font-family: 'Sigmar', cursive;
+    font-size: 36px;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+  }
+  nav.main .logo .pink { color: var(--pink); }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--midnight);
+    padding: 70px 32px 90px;
+    position: relative;
+    overflow: hidden;
+    min-height: 700px;
+  }
+
+  /* Floating decorations */
+  .deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .deco-star-1 { top: 8%; left: 12%; animation: spin 18s linear infinite; }
+  .deco-star-2 { top: 22%; right: 8%; animation: spin 22s linear infinite reverse; }
+  .deco-star-3 { bottom: 18%; left: 8%; animation: spin 25s linear infinite; }
+  .deco-cloud-1 { top: 14%; right: 28%; }
+  .deco-wave-1 { bottom: 10%; right: 16%; opacity: 0.6; }
+
+  @keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-text { position: relative; }
+  .hero .badge-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pink);
+    color: var(--black);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 2.5px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+    margin-bottom: 28px;
+    transform: rotate(-2deg);
+  }
+  .hero h1 {
+    font-family: 'Sigmar', cursive;
+    font-size: clamp(72px, 11vw, 168px);
+    line-height: 0.85;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .hero h1 .pink { color: var(--pink); }
+  .hero h1 .yellow { color: var(--yellow); }
+  .hero h1 .stretch {
+    display: inline-block;
+    transform: rotate(-3deg);
+  }
+  .hero h1 .stretch-2 {
+    display: inline-block;
+    transform: rotate(2deg);
+  }
+  .hero .lede {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--cream);
+    max-width: 480px;
+    margin-bottom: 36px;
+    font-weight: 500;
+  }
+  .hero .lede em {
+    color: var(--yellow);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 32px;
+    border-radius: 999px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 3px solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+    position: relative;
+  }
+  .btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 var(--black);
+  }
+  .btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--black);
+  }
+  .btn.primary {
+    background: var(--pink);
+    color: var(--black);
+  }
+  .btn.secondary {
+    background: var(--yellow);
+    color: var(--black);
+  }
+  .btn.ghost {
+    background: var(--cream);
+    color: var(--black);
+  }
+  .btn.dark {
+    background: var(--black);
+    color: var(--cream);
+  }
+
+  .hero-quote {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--yellow);
+    transform: rotate(-3deg);
+    display: inline-block;
+  }
+
+  /* MASCOTTE SVG container */
+  .hero-mascot {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 4s ease-in-out infinite;
+  }
+  .hero-mascot svg {
+    width: min(440px, 100%);
+    height: auto;
+    filter: drop-shadow(8px 8px 0 var(--black));
+  }
+  .hero-mascot-bubble {
+    position: absolute;
+    top: 5%;
+    right: -3%;
+    background: var(--cream);
+    color: var(--black);
+    padding: 14px 20px;
+    border-radius: 24px 24px 24px 4px;
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+    transform: rotate(4deg);
+    z-index: 3;
+    max-width: 200px;
+  }
+
+  /* ===== MARQUEE BAND ===== */
+  .marquee-band {
+    background: var(--pink);
+    color: var(--black);
+    padding: 22px 0;
+    overflow: hidden;
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 50px;
+    white-space: nowrap;
+    animation: marquee 36s linear infinite;
+    align-items: center;
+    width: max-content;
+  }
+  .marquee-track span {
+    font-family: 'Sigmar', cursive;
+    font-size: 32px;
+    text-transform: uppercase;
+  }
+  .marquee-track .ico {
+    font-size: 24px;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== PARFUMS ===== */
+  .parfums {
+    background: var(--cream);
+    padding: 90px 32px 110px;
+    color: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .parfums::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: radial-gradient(circle, var(--midnight) 30px, transparent 30px);
+    background-size: 80px 60px;
+    background-position: top;
+    opacity: 0.04;
+  }
+  .parfums-head {
+    max-width: 1280px;
+    margin: 0 auto 60px;
+    text-align: center;
+  }
+  .parfums-head .kicker {
+    display: inline-block;
+    background: var(--midnight);
+    color: var(--cream);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    border: 2px solid var(--black);
+    transform: rotate(-1.5deg);
+  }
+  .parfums-head h2 {
+    font-family: 'Sigmar', cursive;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+    color: var(--midnight);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .parfums-head h2 .pink { color: var(--pink-deep); }
+  .parfums-head h2 .stretch { display: inline-block; transform: rotate(-2deg); }
+  .parfums-head p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    color: var(--midnight);
+    max-width: 540px;
+    margin: 0 auto;
+    font-weight: 500;
+  }
+
+  .parfums-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+  }
+
+  .parfum-card {
+    border-radius: 28px;
+    border: 3px solid var(--black);
+    box-shadow: 8px 8px 0 var(--black);
+    padding: 28px 22px 24px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .parfum-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 12px 12px 0 var(--black);
+  }
+  .parfum-card.bg-pink { background: var(--pink); }
+  .parfum-card.bg-yellow { background: var(--yellow); }
+  .parfum-card.bg-mint { background: var(--mint); }
+  .parfum-card.bg-orange { background: var(--orange); }
+  .parfum-card.bg-lilac { background: var(--lilac); }
+  .parfum-card.bg-cream { background: var(--cream-deep); }
+  .parfum-card.bg-pink-light { background: #FFC1D9; }
+  .parfum-card.bg-mint-light { background: #A8E5CD; }
+
+  .parfum-card .badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--cream);
+    color: var(--black);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 2px solid var(--black);
+    transform: rotate(8deg);
+  }
+  .parfum-card .cone-illust {
+    width: 130px;
+    height: 160px;
+    margin: 4px auto 14px;
+  }
+  .parfum-card h3 {
+    font-family: 'Sigmar', cursive;
+    font-size: 28px;
+    line-height: 0.95;
+    color: var(--black);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .parfum-card .origin {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    opacity: 0.7;
+    margin-bottom: 14px;
+  }
+  .parfum-card .desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--black);
+    font-weight: 500;
+    min-height: 60px;
+  }
+  .parfum-card .price {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 2px dashed var(--black);
+    font-family: 'Sigmar', cursive;
+    font-size: 22px;
+    color: var(--black);
+  }
+
+  /* ===== SERIES OF THE MONTH ===== */
+  .series {
+    background: var(--pink);
+    padding: 100px 32px;
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+    position: relative;
+    overflow: hidden;
+    color: var(--black);
+  }
+  .series-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .series-mascot {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .series-mascot svg {
+    width: min(380px, 90%);
+    height: auto;
+    filter: drop-shadow(8px 8px 0 var(--black));
+  }
+  .series-mascot .bubble {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 14px 18px;
+    border-radius: 24px 24px 4px 24px;
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+    transform: rotate(-5deg);
+    max-width: 180px;
+  }
+
+  .series-text .kicker {
+    display: inline-block;
+    background: var(--black);
+    color: var(--cream);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .series-text h2 {
+    font-family: 'Sigmar', cursive;
+    font-size: clamp(48px, 6.5vw, 88px);
+    line-height: 0.92;
+    color: var(--black);
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+  .series-text h2 .yellow { color: var(--yellow); }
+  .series-text h2 .stretch { display: inline-block; transform: rotate(-2deg); }
+  .series-text p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--black);
+    margin-bottom: 16px;
+    font-weight: 500;
+    max-width: 520px;
+  }
+  .series-text p strong { font-weight: 800; }
+
+  .series-flavors {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .series-flavors .chip {
+    background: var(--cream);
+    color: var(--black);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    border: 2.5px solid var(--black);
+    box-shadow: 3px 3px 0 var(--black);
+  }
+  .series-flavors .chip.yellow { background: var(--yellow); }
+  .series-flavors .chip.mint { background: var(--mint); }
+  .series-flavors .chip.lilac { background: var(--lilac); }
+
+  /* Wavy divider */
+  .wavy-divider {
+    background: var(--midnight);
+    height: 30px;
+    background-image:
+      radial-gradient(circle at 20px 30px, var(--pink) 22px, transparent 22px),
+      radial-gradient(circle at 60px 30px, var(--midnight) 22px, transparent 22px);
+    background-size: 80px 60px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about {
+    background: var(--mint);
+    padding: 100px 32px;
+    color: var(--black);
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .about::before {
+    content: '★';
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    font-size: 80px;
+    color: var(--yellow);
+    opacity: 0.6;
+    transform: rotate(-12deg);
+  }
+  .about::after {
+    content: '✦';
+    position: absolute;
+    bottom: 14%;
+    right: 5%;
+    font-size: 60px;
+    color: var(--pink-deep);
+    opacity: 0.6;
+    transform: rotate(15deg);
+  }
+  .about-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .about-text .kicker {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--black);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    border: 2px solid var(--black);
+  }
+  .about-text h2 {
+    font-family: 'Sigmar', cursive;
+    font-size: clamp(46px, 6vw, 80px);
+    line-height: 0.95;
+    color: var(--black);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .about-text h2 .pink { color: var(--pink-deep); }
+  .about-text p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--black);
+    margin-bottom: 16px;
+    font-weight: 500;
+    max-width: 520px;
+  }
+  .about-text p em { color: var(--midnight); font-style: normal; font-weight: 800; }
+
+  .mof-stamp-pop {
+    margin-top: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--cream);
+    padding: 16px 22px 16px 16px;
+    border-radius: 999px;
+    border: 3px solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+  }
+  .mof-stamp-pop .seal {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--midnight);
+    color: var(--yellow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--black);
+    flex-shrink: 0;
+  }
+  .mof-stamp-pop .seal .top {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .mof-stamp-pop .seal .core {
+    font-family: 'Sigmar', cursive;
+    font-size: 18px;
+    line-height: 1;
+    margin-top: 1px;
+    color: var(--yellow);
+  }
+  .mof-stamp-pop .text-side .lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    opacity: 0.7;
+  }
+  .mof-stamp-pop .text-side .name {
+    font-family: 'Sigmar', cursive;
+    font-size: 18px;
+    color: var(--black);
+  }
+
+  .about-mascot-block {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .about-mascot-block .bubble {
+    position: absolute;
+    top: 8%;
+    left: -8%;
+    background: var(--white);
+    color: var(--black);
+    padding: 14px 20px;
+    border-radius: 24px 24px 24px 4px;
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+    transform: rotate(-4deg);
+    max-width: 220px;
+    z-index: 3;
+  }
+  .about-mascot-block svg {
+    width: min(360px, 90%);
+    filter: drop-shadow(8px 8px 0 var(--black));
+  }
+
+  /* ===== WINDOW / LOCATION ===== */
+  .window-section {
+    background: var(--midnight);
+    padding: 100px 32px;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .window-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: stretch;
+  }
+  .window-photo-pop {
+    border-radius: 28px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: url('da_devanture.jpeg') center/cover;
+    border: 3px solid var(--black);
+    box-shadow: 8px 8px 0 var(--black);
+    position: relative;
+  }
+  .window-photo-pop .corner-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 2.5px solid var(--black);
+    transform: rotate(-3deg);
+  }
+  .window-photo-pop .photo-sticker {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    background: var(--pink);
+    color: var(--black);
+    padding: 12px 20px;
+    border-radius: 22px;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+    transform: rotate(4deg);
+  }
+
+  .window-info-pop {
+    background: var(--cream);
+    border-radius: 28px;
+    border: 3px solid var(--black);
+    box-shadow: 8px 8px 0 var(--black);
+    padding: 38px 36px;
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .window-info-pop .kicker {
+    display: inline-block;
+    background: var(--midnight);
+    color: var(--cream);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    align-self: flex-start;
+  }
+  .window-info-pop h3 {
+    font-family: 'Sigmar', cursive;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 0.95;
+    color: var(--midnight);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .window-info-pop h3 .pink { color: var(--pink-deep); }
+  .window-info-pop .addr {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    color: var(--black);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .window-info-pop .lines {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .window-info-pop .line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: var(--cream-deep);
+    border: 2px solid var(--black);
+    border-radius: 16px;
+  }
+  .window-info-pop .line .ico {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--pink);
+    border: 2px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .window-info-pop .line .ico.yellow { background: var(--yellow); }
+  .window-info-pop .line .ico.mint { background: var(--mint); }
+  .window-info-pop .line .text {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+  }
+  .window-info-pop .line .text strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--midnight);
+    margin-bottom: 2px;
+  }
+  .window-info-pop .ctas {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* ===== SOCIAL/QUOTES POP ===== */
+  .social-pop {
+    background: var(--yellow);
+    padding: 90px 32px;
+    color: var(--black);
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+  }
+  .social-pop-head {
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto 60px;
+  }
+  .social-pop-head .kicker {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--black);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    border: 2px solid var(--black);
+  }
+  .social-pop-head h2 {
+    font-family: 'Sigmar', cursive;
+    font-size: clamp(46px, 6vw, 80px);
+    line-height: 0.95;
+    color: var(--black);
+    text-transform: uppercase;
+  }
+
+  .quotes-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .quote-bubble {
+    background: var(--cream);
+    border: 3px solid var(--black);
+    border-radius: 28px;
+    padding: 28px 26px 24px;
+    box-shadow: 8px 8px 0 var(--black);
+    position: relative;
+  }
+  .quote-bubble:nth-child(1) { transform: rotate(-1.5deg); }
+  .quote-bubble:nth-child(2) { transform: rotate(0.5deg); }
+  .quote-bubble:nth-child(3) { transform: rotate(-1deg); }
+  .quote-bubble .stars {
+    color: var(--orange-deep);
+    font-size: 18px;
+    margin-bottom: 14px;
+    letter-spacing: 0.1em;
+  }
+  .quote-bubble .text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--black);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .quote-bubble .text em {
+    color: var(--pink-deep);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .quote-bubble .source {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 2px dashed var(--black);
+  }
+  .quote-bubble .source .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sigmar', cursive;
+    font-size: 14px;
+    color: var(--black);
+    background: var(--mint);
+    flex-shrink: 0;
+  }
+  .quote-bubble .source .avatar.pink { background: var(--pink); }
+  .quote-bubble .source .avatar.lilac { background: var(--lilac); }
+  .quote-bubble .source .name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .quote-bubble .source .name span {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--black);
+    opacity: 0.6;
+  }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter-pop {
+    background: var(--orange);
+    padding: 90px 32px;
+    color: var(--black);
+    text-align: center;
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .newsletter-pop::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 8%;
+    width: 80px;
+    height: 80px;
+    background: var(--pink);
+    border-radius: 50%;
+    border: 3px solid var(--black);
+  }
+  .newsletter-pop::after {
+    content: '';
+    position: absolute;
+    bottom: 12%;
+    right: 8%;
+    width: 60px;
+    height: 60px;
+    background: var(--mint);
+    border-radius: 50%;
+    border: 3px solid var(--black);
+  }
+  .newsletter-pop-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .newsletter-pop .kicker {
+    display: inline-block;
+    background: var(--midnight);
+    color: var(--cream);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    border: 2px solid var(--black);
+  }
+  .newsletter-pop h2 {
+    font-family: 'Sigmar', cursive;
+    font-size: clamp(42px, 5.5vw, 72px);
+    line-height: 0.95;
+    color: var(--black);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .newsletter-pop p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    color: var(--black);
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  .newsletter-pop form {
+    display: flex;
+    gap: 8px;
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--cream);
+    border-radius: 999px;
+    padding: 6px;
+    border: 3px solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+  }
+  .newsletter-pop input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 14px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    color: var(--black);
+    font-weight: 500;
+  }
+  .newsletter-pop input::placeholder { color: var(--black); opacity: 0.5; }
+  .newsletter-pop button {
+    background: var(--midnight);
+    color: var(--cream);
+    border: none;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .newsletter-pop button:hover { background: var(--pink-deep); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--midnight);
+    color: var(--cream);
+    padding: 80px 32px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer-mascot {
+    position: absolute;
+    bottom: 0;
+    right: -40px;
+    width: 220px;
+    opacity: 0.92;
+    z-index: 1;
+  }
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto 50px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 50px;
+    position: relative;
+    z-index: 2;
+  }
+  .footer-grid h5 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--yellow);
+    margin-bottom: 18px;
+  }
+  .footer-grid ul { list-style: none; }
+  .footer-grid li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--cream);
+    font-weight: 500;
+  }
+  .footer-grid a:hover { color: var(--pink); }
+  .footer-grid .brand .display {
+    font-family: 'Sigmar', cursive;
+    font-size: 48px;
+    margin-bottom: 14px;
+    color: var(--cream);
+    line-height: 0.95;
+  }
+  .footer-grid .brand .display .pink { color: var(--pink); }
+  .footer-grid .brand p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--cream);
+    opacity: 0.8;
+    max-width: 320px;
+    font-weight: 500;
+  }
+  .footer-grid .brand .signature {
+    font-family: 'Caveat', cursive;
+    color: var(--yellow);
+    font-size: 26px;
+    margin-top: 20px;
+    display: inline-block;
+    transform: rotate(-3deg);
+  }
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 2px dashed rgba(255, 246, 229, 0.2);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--cream);
+    opacity: 0.5;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1100px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero h1 { font-size: clamp(56px, 13vw, 110px); }
+    .parfums-grid { grid-template-columns: repeat(2, 1fr); }
+    .series-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .series-mascot { order: -1; }
+    .series-text p { margin-left: auto; margin-right: auto; }
+    .series-flavors { justify-content: center; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .window-grid { grid-template-columns: 1fr; }
+    .quotes-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .footer-mascot { width: 160px; opacity: 0.6; }
+  }
+  @media (max-width: 700px) {
+    nav.main { grid-template-columns: 1fr; text-align: center; padding: 14px 16px; }
+    nav.main .nav-left, nav.main .nav-right { display: none; }
+    .topbar-track { font-size: 11px; }
+    .hero { padding: 50px 20px; min-height: 600px; }
+    .hero-mascot-bubble { font-size: 16px; padding: 10px 14px; }
+    .parfums-grid { grid-template-columns: 1fr; }
+    .marquee-track span { font-size: 24px; }
+    .deco { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-track">
+    <span>★ Coucou Crozon</span><span class="star">●</span>
+    <span>14 mai → 30 sept</span><span class="star">●</span>
+    <span>Tous les jours 14h-22h</span><span class="star">●</span>
+    <span>Quai K18, Morgat</span><span class="star">●</span>
+    <span>8 parfums signés MOF</span><span class="star">●</span>
+    <span>Toppings sans limite</span><span class="star">●</span>
+    <span>★ Coucou Crozon</span><span class="star">●</span>
+    <span>14 mai → 30 sept</span><span class="star">●</span>
+    <span>Tous les jours 14h-22h</span><span class="star">●</span>
+    <span>Quai K18, Morgat</span><span class="star">●</span>
+    <span>8 parfums signés MOF</span><span class="star">●</span>
+    <span>Toppings sans limite</span><span class="star">●</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main">
+  <div class="nav-left">
+    <a href="#parfums">Parfums</a>
+    <a href="#series">La série</a>
+    <a href="#window">Notre fenêtre</a>
+  </div>
+  <a class="logo" href="#">La<span class="pink"> Fenêtre</span></a>
+  <div class="nav-right">
+    <a href="#about">Notre histoire</a>
+    <a href="https://instagram.com" target="_blank">Instagram ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- Decorations -->
+  <svg class="deco deco-star-1" width="60" height="60" viewBox="0 0 60 60">
+    <path d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z" fill="#FFC940"/>
+  </svg>
+  <svg class="deco deco-star-2" width="40" height="40" viewBox="0 0 60 60">
+    <path d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z" fill="#FF6B9D"/>
+  </svg>
+  <svg class="deco deco-star-3" width="50" height="50" viewBox="0 0 60 60">
+    <path d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z" fill="#6FD4B0"/>
+  </svg>
+  <svg class="deco deco-cloud-1" width="80" height="40" viewBox="0 0 80 40">
+    <ellipse cx="20" cy="22" rx="18" ry="12" fill="#FFF6E5" opacity="0.15"/>
+    <ellipse cx="40" cy="18" rx="22" ry="14" fill="#FFF6E5" opacity="0.15"/>
+    <ellipse cx="60" cy="22" rx="18" ry="11" fill="#FFF6E5" opacity="0.15"/>
+  </svg>
+
+  <div class="hero-grid">
+
+    <div class="hero-text">
+      <div class="badge-top">
+        <span>★</span><span>Glaces & bord de mer</span><span>★</span>
+      </div>
+      <h1>
+        <span class="stretch">La</span><br>
+        <span class="pink">Fe</span><span class="yellow">nê</span><span class="pink">tre</span><br>
+        <span class="stretch-2" style="font-size: 0.6em;">de Crozon</span>
+      </h1>
+      <p class="lede">8 parfums signés <em>Meilleur Ouvrier de France</em>, servis à la fenêtre, face au port. Tous les jours. Tout l'été.</p>
+      <div class="hero-ctas">
+        <a href="#parfums" class="btn primary">Voir les parfums →</a>
+        <a href="#window" class="btn ghost">Y aller</a>
+      </div>
+      <div style="margin-top: 26px;">
+        <span class="hero-quote">★ ouverture le 14 mai ★</span>
+      </div>
+    </div>
+
+    <div class="hero-mascot">
+
+      <div class="hero-mascot-bubble">
+        Coucou !<br>
+        <span style="font-size: 0.8em; opacity: 0.7;">— Mouette</span>
+      </div>
+
+      <!-- MOUETTE MASCOT SVG -->
+      <svg viewBox="0 0 360 460" xmlns="http://www.w3.org/2000/svg">
+        <!-- Feet -->
+        <line x1="148" y1="412" x2="142" y2="436" stroke="#FF8B4A" stroke-width="7" stroke-linecap="round"/>
+        <line x1="212" y1="412" x2="218" y2="436" stroke="#FF8B4A" stroke-width="7" stroke-linecap="round"/>
+        <path d="M 134 436 L 152 436 M 142 436 L 142 444" stroke="#FF8B4A" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M 208 436 L 226 436 M 218 436 L 218 444" stroke="#FF8B4A" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+        <!-- Body (large white oval) -->
+        <ellipse cx="180" cy="290" rx="100" ry="120" fill="#FFFFFF" stroke="#14181C" stroke-width="4"/>
+
+        <!-- Belly accent -->
+        <ellipse cx="180" cy="320" rx="56" ry="62" fill="#F8F8F8" stroke="none"/>
+
+        <!-- Wings -->
+        <path d="M 88 270 Q 50 250 62 210 Q 78 240 92 320 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="4"/>
+        <path d="M 272 270 Q 310 250 298 210 Q 282 240 268 320 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="4"/>
+
+        <!-- Marinière scarf -->
+        <path d="M 110 230 Q 180 248 250 230 Q 248 252 230 258 Q 180 268 130 258 Q 112 252 110 230 Z" fill="#0A2438" stroke="#14181C" stroke-width="3"/>
+        <line x1="130" y1="232" x2="130" y2="258" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="155" y1="234" x2="155" y2="262" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="180" y1="236" x2="180" y2="264" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="205" y1="234" x2="205" y2="262" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="230" y1="232" x2="230" y2="258" stroke="#FFFFFF" stroke-width="3"/>
+
+        <!-- Head (large white circle) -->
+        <circle cx="180" cy="138" r="92" fill="#FFFFFF" stroke="#14181C" stroke-width="4"/>
+
+        <!-- Hair tuft -->
+        <path d="M 145 60 Q 150 40 162 50 Q 170 38 180 50 Q 192 38 200 50 Q 215 42 220 60 Q 200 70 180 68 Q 160 70 145 60 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="3"/>
+
+        <!-- Eyes -->
+        <circle cx="148" cy="130" r="14" fill="#14181C"/>
+        <circle cx="212" cy="130" r="14" fill="#14181C"/>
+        <!-- Eye highlights -->
+        <circle cx="153" cy="124" r="5" fill="#FFFFFF"/>
+        <circle cx="217" cy="124" r="5" fill="#FFFFFF"/>
+        <!-- Small sparkle -->
+        <circle cx="143" cy="135" r="2" fill="#FFFFFF"/>
+        <circle cx="207" cy="135" r="2" fill="#FFFFFF"/>
+
+        <!-- Beak -->
+        <path d="M 168 158 L 192 158 L 180 178 Z" fill="#FF8B4A" stroke="#14181C" stroke-width="3"/>
+
+        <!-- Smile (slight curve under beak) -->
+        <path d="M 162 192 Q 180 200 198 192" stroke="#14181C" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+        <!-- Cone holding (right side, in wing) -->
+        <g transform="translate(248, 240) rotate(15)">
+          <!-- Cone (waffle pattern) -->
+          <polygon points="-22,40 22,40 0,108" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="-14" y1="56" x2="14" y2="56" stroke="#14181C" stroke-width="1.5" opacity="0.6"/>
+          <line x1="-12" y1="68" x2="12" y2="68" stroke="#14181C" stroke-width="1.5" opacity="0.6"/>
+          <line x1="-10" y1="80" x2="10" y2="80" stroke="#14181C" stroke-width="1.5" opacity="0.6"/>
+          <line x1="-8" y1="92" x2="8" y2="92" stroke="#14181C" stroke-width="1.5" opacity="0.6"/>
+          <line x1="-16" y1="56" x2="-8" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.6"/>
+          <line x1="0" y1="56" x2="0" y2="106" stroke="#14181C" stroke-width="1.5" opacity="0.6"/>
+          <line x1="16" y1="56" x2="8" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.6"/>
+
+          <!-- Strawberry scoop -->
+          <circle cx="0" cy="20" r="32" fill="#FF6B9D" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes on scoop -->
+          <circle cx="-10" cy="14" r="3.5" fill="#14181C"/>
+          <circle cx="10" cy="14" r="3.5" fill="#14181C"/>
+          <circle cx="-8.5" cy="12.5" r="1.2" fill="#FFFFFF"/>
+          <circle cx="11.5" cy="12.5" r="1.2" fill="#FFFFFF"/>
+          <!-- Smile on scoop -->
+          <path d="M -8 24 Q 0 30 8 24" stroke="#14181C" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Tiny dots -->
+          <circle cx="-18" cy="22" r="1.5" fill="#14181C" opacity="0.4"/>
+          <circle cx="18" cy="22" r="1.5" fill="#14181C" opacity="0.4"/>
+          <circle cx="0" cy="-2" r="1.5" fill="#14181C" opacity="0.4"/>
+        </g>
+
+        <!-- Cheek blushes -->
+        <ellipse cx="124" cy="170" rx="12" ry="8" fill="#FF6B9D" opacity="0.5"/>
+        <ellipse cx="236" cy="170" rx="12" ry="8" fill="#FF6B9D" opacity="0.5"/>
+      </svg>
+
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE BAND -->
+<div class="marquee-band">
+  <div class="marquee-track">
+    <span>Fait maison</span><span class="ico">★</span>
+    <span>Signé MOF</span><span class="ico">●</span>
+    <span>Sans limite</span><span class="ico">★</span>
+    <span>Bord de mer</span><span class="ico">●</span>
+    <span>Crozon fier</span><span class="ico">★</span>
+    <span>Coucou !</span><span class="ico">●</span>
+    <span>Fait maison</span><span class="ico">★</span>
+    <span>Signé MOF</span><span class="ico">●</span>
+    <span>Sans limite</span><span class="ico">★</span>
+    <span>Bord de mer</span><span class="ico">●</span>
+    <span>Crozon fier</span><span class="ico">★</span>
+    <span>Coucou !</span><span class="ico">●</span>
+  </div>
+</div>
+
+<!-- PARFUMS -->
+<section class="parfums" id="parfums">
+  <div class="parfums-head">
+    <span class="kicker">★ Carte d'été 2026 ★</span>
+    <h2><span class="stretch">8 parfums.</span><br><span class="pink">0 conneries.</span></h2>
+    <p>La carte change avec la saison, mais ces 8-là restent toute l'été. Tous signés Meilleur Ouvrier de France, fait maison à l'atelier.</p>
+  </div>
+
+  <div class="parfums-grid">
+
+    <article class="parfum-card bg-cream">
+      <span class="badge">★ La star ★</span>
+      <div class="cone-illust">
+        <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cone -->
+          <polygon points="38,80 92,80 65,150" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="50" y1="100" x2="80" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="56" y1="115" x2="74" y2="115" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="44" y1="100" x2="55" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="65" y1="100" x2="65" y2="148" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="86" y1="100" x2="75" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <!-- Vanilla scoop -->
+          <circle cx="65" cy="50" r="38" fill="#FFE8B8" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes -->
+          <circle cx="52" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="78" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="54" cy="40" r="1.5" fill="#FFFFFF"/>
+          <circle cx="80" cy="40" r="1.5" fill="#FFFFFF"/>
+          <!-- Smile -->
+          <path d="M 54 56 Q 65 64 76 56" stroke="#14181C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Vanilla seed dots -->
+          <circle cx="60" cy="50" r="1.2" fill="#14181C" opacity="0.5"/>
+          <circle cx="70" cy="56" r="1.2" fill="#14181C" opacity="0.5"/>
+          <circle cx="48" cy="56" r="1" fill="#14181C" opacity="0.4"/>
+        </svg>
+      </div>
+      <h3>Vanille<br>Madagascar</h3>
+      <div class="origin">Sambava · IGP</div>
+      <p class="desc">Une gousse fendue, infusion lente. Onctueuse comme il faut.</p>
+      <div class="price">3€80</div>
+    </article>
+
+    <article class="parfum-card bg-pink">
+      <span class="badge">★ Mai ★</span>
+      <div class="cone-illust">
+        <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="38,80 92,80 65,150" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="50" y1="100" x2="80" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="56" y1="115" x2="74" y2="115" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="44" y1="100" x2="55" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="65" y1="100" x2="65" y2="148" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="86" y1="100" x2="75" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <!-- Strawberry scoop -->
+          <circle cx="65" cy="50" r="38" fill="#FFFFFF" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes (winking left) -->
+          <path d="M 47 42 Q 52 38 57 42" stroke="#14181C" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="78" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="80" cy="40" r="1.5" fill="#FFFFFF"/>
+          <!-- Smile -->
+          <path d="M 54 56 Q 65 66 76 56" stroke="#14181C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Strawberry seed dots -->
+          <circle cx="56" cy="56" r="1.2" fill="#FF6B9D"/>
+          <circle cx="74" cy="58" r="1.2" fill="#FF6B9D"/>
+          <circle cx="65" cy="62" r="1.2" fill="#FF6B9D"/>
+        </svg>
+      </div>
+      <h3>Fraise<br>Plougastel</h3>
+      <div class="origin">Bretagne · 6h du mat</div>
+      <p class="desc">Récoltée chez M. Ferru, écrasée au mortier. La star du printemps.</p>
+      <div class="price">3€80</div>
+    </article>
+
+    <article class="parfum-card bg-yellow">
+      <span class="badge">Côte d'Azur</span>
+      <div class="cone-illust">
+        <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="38,80 92,80 65,150" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="50" y1="100" x2="80" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="56" y1="115" x2="74" y2="115" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="44" y1="100" x2="55" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="65" y1="100" x2="65" y2="148" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="86" y1="100" x2="75" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <!-- Lemon scoop -->
+          <circle cx="65" cy="50" r="38" fill="#FFE07A" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes (zesty look) -->
+          <circle cx="52" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="78" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="54" cy="40" r="1.5" fill="#FFFFFF"/>
+          <circle cx="80" cy="40" r="1.5" fill="#FFFFFF"/>
+          <!-- Sour mouth shape (small "o") -->
+          <ellipse cx="65" cy="60" rx="3.5" ry="5" fill="#14181C"/>
+          <!-- Lemon zest lines -->
+          <line x1="40" y1="50" x2="48" y2="50" stroke="#FFC940" stroke-width="2" stroke-linecap="round"/>
+          <line x1="82" y1="50" x2="90" y2="50" stroke="#FFC940" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Citron<br>de Menton</h3>
+      <div class="origin">IGP · sans masque</div>
+      <p class="desc">Sorbet plein fruit. Plus acidulé qu'une remarque de ma belle-mère.</p>
+      <div class="price">3€60</div>
+    </article>
+
+    <article class="parfum-card bg-mint">
+      <span class="badge">★ Bronte ★</span>
+      <div class="cone-illust">
+        <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="38,80 92,80 65,150" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="50" y1="100" x2="80" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="56" y1="115" x2="74" y2="115" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="44" y1="100" x2="55" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="65" y1="100" x2="65" y2="148" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="86" y1="100" x2="75" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <!-- Pistachio scoop -->
+          <circle cx="65" cy="50" r="38" fill="#A8D8B5" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes (cool look) -->
+          <circle cx="52" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="78" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="54" cy="40" r="1.5" fill="#FFFFFF"/>
+          <circle cx="80" cy="40" r="1.5" fill="#FFFFFF"/>
+          <!-- Cool smirk -->
+          <path d="M 54 58 Q 65 60 76 58" stroke="#14181C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Pistachio chunks -->
+          <ellipse cx="58" cy="55" rx="2.5" ry="3.5" fill="#5D7A4A" stroke="#14181C" stroke-width="0.7"/>
+          <ellipse cx="76" cy="60" rx="2.5" ry="3.5" fill="#5D7A4A" stroke="#14181C" stroke-width="0.7"/>
+        </svg>
+      </div>
+      <h3>Pistache<br>Bronte</h3>
+      <div class="origin">Sicile · DOP</div>
+      <p class="desc">Broyée à froid maison. Vert sombre naturel, jamais trafiqué.</p>
+      <div class="price">4€20</div>
+    </article>
+
+    <article class="parfum-card bg-orange">
+      <span class="badge">Guérande</span>
+      <div class="cone-illust">
+        <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="38,80 92,80 65,150" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="50" y1="100" x2="80" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="56" y1="115" x2="74" y2="115" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="44" y1="100" x2="55" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="65" y1="100" x2="65" y2="148" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="86" y1="100" x2="75" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <!-- Caramel scoop -->
+          <circle cx="65" cy="50" r="38" fill="#D89A6A" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes (relaxed) -->
+          <path d="M 47 42 L 57 42" stroke="#14181C" stroke-width="3" stroke-linecap="round"/>
+          <path d="M 73 42 L 83 42" stroke="#14181C" stroke-width="3" stroke-linecap="round"/>
+          <!-- Big smile -->
+          <path d="M 50 56 Q 65 70 80 56" stroke="#14181C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Salt sparkle -->
+          <text x="58" y="32" fill="#FFFFFF" font-size="10" font-weight="bold">✦</text>
+        </svg>
+      </div>
+      <h3>Caramel<br>beurre salé</h3>
+      <div class="origin">IGP · fleur de sel</div>
+      <p class="desc">Cassée à la main. Le beurre, tu l'entends presque.</p>
+      <div class="price">3€80</div>
+    </article>
+
+    <article class="parfum-card bg-pink-light">
+      <span class="badge">★ Best ★</span>
+      <div class="cone-illust">
+        <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="38,80 92,80 65,150" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="50" y1="100" x2="80" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="56" y1="115" x2="74" y2="115" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="44" y1="100" x2="55" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="65" y1="100" x2="65" y2="148" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="86" y1="100" x2="75" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <!-- Raspberry scoop -->
+          <circle cx="65" cy="50" r="38" fill="#E04B7C" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes -->
+          <circle cx="52" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="78" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="54" cy="40" r="1.5" fill="#FFFFFF"/>
+          <circle cx="80" cy="40" r="1.5" fill="#FFFFFF"/>
+          <!-- Smile -->
+          <path d="M 54 58 Q 65 65 76 58" stroke="#14181C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Raspberry texture dots -->
+          <circle cx="50" cy="48" r="2" fill="#A82E54" opacity="0.5"/>
+          <circle cx="80" cy="48" r="2" fill="#A82E54" opacity="0.5"/>
+          <circle cx="58" cy="60" r="2" fill="#A82E54" opacity="0.5"/>
+          <circle cx="74" cy="62" r="2" fill="#A82E54" opacity="0.5"/>
+        </svg>
+      </div>
+      <h3>Framboise<br>de Bretagne</h3>
+      <div class="origin">Finistère · plein fruit</div>
+      <p class="desc">Sorbet, cueillette du Finistère. La framboise qu'on attendait.</p>
+      <div class="price">3€60</div>
+    </article>
+
+    <article class="parfum-card bg-lilac">
+      <span class="badge">Piémont</span>
+      <div class="cone-illust">
+        <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="38,80 92,80 65,150" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="50" y1="100" x2="80" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="56" y1="115" x2="74" y2="115" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="44" y1="100" x2="55" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="65" y1="100" x2="65" y2="148" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="86" y1="100" x2="75" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <!-- Hazelnut scoop -->
+          <circle cx="65" cy="50" r="38" fill="#B58363" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes -->
+          <circle cx="52" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="78" cy="42" r="4.5" fill="#14181C"/>
+          <circle cx="54" cy="40" r="1.5" fill="#FFFFFF"/>
+          <circle cx="80" cy="40" r="1.5" fill="#FFFFFF"/>
+          <!-- Tiny smile -->
+          <path d="M 56 58 Q 65 62 74 58" stroke="#14181C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Hazelnut chunks -->
+          <ellipse cx="56" cy="48" rx="2" ry="2.5" fill="#7A4F38" opacity="0.7"/>
+          <ellipse cx="78" cy="56" rx="2" ry="2.5" fill="#7A4F38" opacity="0.7"/>
+        </svg>
+      </div>
+      <h3>Noisette<br>du Piémont</h3>
+      <div class="origin">Tonda · IGP</div>
+      <p class="desc">Tonda Gentile, torréfiée maison. Le goûter qu'on n'a jamais oublié.</p>
+      <div class="price">3€80</div>
+    </article>
+
+    <article class="parfum-card bg-mint-light">
+      <span class="badge">Pérou</span>
+      <div class="cone-illust">
+        <svg viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="38,80 92,80 65,150" fill="#FFC940" stroke="#14181C" stroke-width="3"/>
+          <line x1="50" y1="100" x2="80" y2="100" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="56" y1="115" x2="74" y2="115" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="44" y1="100" x2="55" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="65" y1="100" x2="65" y2="148" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="86" y1="100" x2="75" y2="140" stroke="#14181C" stroke-width="1.5" opacity="0.5"/>
+          <!-- Chocolate scoop -->
+          <circle cx="65" cy="50" r="38" fill="#3F2A1E" stroke="#14181C" stroke-width="3"/>
+          <!-- Eyes -->
+          <circle cx="52" cy="42" r="4.5" fill="#FFFFFF"/>
+          <circle cx="78" cy="42" r="4.5" fill="#FFFFFF"/>
+          <circle cx="52" cy="42" r="2" fill="#14181C"/>
+          <circle cx="78" cy="42" r="2" fill="#14181C"/>
+          <!-- Smile -->
+          <path d="M 54 56 Q 65 64 76 56" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Chocolat<br>noir 70%</h3>
+      <div class="origin">Pérou · pure origine</div>
+      <p class="desc">Conchage long, sans lécithine. Le chocolat des grandes occasions.</p>
+      <div class="price">3€80</div>
+    </article>
+
+  </div>
+</section>
+
+<!-- SERIES OF THE MONTH -->
+<section class="series" id="series">
+  <div class="series-grid">
+
+    <div class="series-mascot">
+      <div class="bubble">
+        Mai = fraise.<br>Tout simplement !
+      </div>
+      <!-- Mouette holding strawberry -->
+      <svg viewBox="0 0 360 380" xmlns="http://www.w3.org/2000/svg">
+        <!-- Feet -->
+        <line x1="148" y1="332" x2="142" y2="356" stroke="#FF8B4A" stroke-width="6" stroke-linecap="round"/>
+        <line x1="212" y1="332" x2="218" y2="356" stroke="#FF8B4A" stroke-width="6" stroke-linecap="round"/>
+        <!-- Body -->
+        <ellipse cx="180" cy="220" rx="86" ry="100" fill="#FFFFFF" stroke="#14181C" stroke-width="4"/>
+        <!-- Wings -->
+        <path d="M 96 200 Q 60 180 70 145 Q 84 175 100 250 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="4"/>
+        <path d="M 264 200 Q 300 180 290 145 Q 276 175 260 250 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="4"/>
+        <!-- Marinière -->
+        <path d="M 116 175 Q 180 192 244 175 Q 242 196 228 200 Q 180 210 132 200 Q 118 196 116 175 Z" fill="#0A2438" stroke="#14181C" stroke-width="3"/>
+        <line x1="135" y1="178" x2="135" y2="200" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="158" y1="180" x2="158" y2="204" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="180" y1="182" x2="180" y2="206" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="202" y1="180" x2="202" y2="204" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="225" y1="178" x2="225" y2="200" stroke="#FFFFFF" stroke-width="3"/>
+        <!-- Head -->
+        <circle cx="180" cy="105" r="80" fill="#FFFFFF" stroke="#14181C" stroke-width="4"/>
+        <!-- Hair -->
+        <path d="M 152 38 Q 158 22 168 30 Q 175 20 180 30 Q 185 20 192 30 Q 202 22 208 38 Q 188 46 180 44 Q 172 46 152 38 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="3"/>
+        <!-- Eyes (big & happy) -->
+        <circle cx="152" cy="100" r="13" fill="#14181C"/>
+        <circle cx="208" cy="100" r="13" fill="#14181C"/>
+        <circle cx="156" cy="95" r="4" fill="#FFFFFF"/>
+        <circle cx="212" cy="95" r="4" fill="#FFFFFF"/>
+        <!-- Beak -->
+        <path d="M 170 124 L 190 124 L 180 142 Z" fill="#FF8B4A" stroke="#14181C" stroke-width="3"/>
+        <!-- Big smile -->
+        <path d="M 158 152 Q 180 165 202 152" stroke="#14181C" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Cheeks -->
+        <ellipse cx="128" cy="135" rx="11" ry="7" fill="#FF6B9D" opacity="0.6"/>
+        <ellipse cx="232" cy="135" rx="11" ry="7" fill="#FF6B9D" opacity="0.6"/>
+        <!-- Strawberry held in left wing -->
+        <g transform="translate(112, 220) rotate(-15)">
+          <path d="M 0 0 Q -22 0 -22 18 Q -22 36 0 42 Q 22 36 22 18 Q 22 0 0 0 Z" fill="#FF6B9D" stroke="#14181C" stroke-width="3"/>
+          <path d="M -6 -8 L 6 -8 L 0 0 Z" fill="#5D7A4A" stroke="#14181C" stroke-width="2"/>
+          <circle cx="-8" cy="14" r="1.5" fill="#14181C" opacity="0.5"/>
+          <circle cx="8" cy="14" r="1.5" fill="#14181C" opacity="0.5"/>
+          <circle cx="-3" cy="22" r="1.5" fill="#14181C" opacity="0.5"/>
+          <circle cx="6" cy="22" r="1.5" fill="#14181C" opacity="0.5"/>
+          <circle cx="0" cy="32" r="1.5" fill="#14181C" opacity="0.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="series-text">
+      <span class="kicker">★ La série du mois — Mai ★</span>
+      <h2><span class="stretch">Cinq</span> <span class="yellow">fraises</span><br>et c'est tout.</h2>
+      <p>La fraise de Plougastel a été <strong>cueillie ce matin à 6h</strong>, chez M. Ferru. On en a fait cinq parfums — un classique, un sorbet, un vacherin, et deux audacieux.</p>
+      <p>Chaque mois, on fait pareil avec un autre fruit. <strong>Pas plus, pas moins.</strong></p>
+
+      <div class="series-flavors">
+        <span class="chip">Fraise classique</span>
+        <span class="chip">Sorbet plein fruit</span>
+        <span class="chip yellow">Fraise-vanille</span>
+        <span class="chip mint">Fraise-rhubarbe</span>
+        <span class="chip lilac">Vacherin basilic</span>
+        <span class="chip">Fraise-Sichuan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+
+    <div class="about-text">
+      <span class="kicker">★ Notre histoire ★</span>
+      <h2>Une fenêtre,<br>une <span class="pink">équipe</span>,<br>un MOF.</h2>
+      <p>La Fenêtre, ce n'est pas une chaîne, ce n'est pas un food truck. C'est <em>un seul atelier</em>, à Crozon, qui ouvre tous les après-midis de l'été — par grand beau temps comme par crachin.</p>
+      <p>Tous les parfums sont signés <em>Meilleur Ouvrier de France</em>. Le sucre n'est pas masqué, la pistache vient vraiment de Bronte, la fraise vraiment de Plougastel. <em>On ne triche pas.</em></p>
+      <p>On vous attend du 14 mai au 30 septembre. Mouette aussi.</p>
+
+      <div class="mof-stamp-pop">
+        <div class="seal">
+          <span class="top">★ MOF ★</span>
+          <span class="core">M·O·F</span>
+        </div>
+        <div class="text-side">
+          <div class="lbl">— Signé par —</div>
+          <div class="name">Gérard Cabiron</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-mascot-block">
+      <div class="bubble">
+        Et moi je suis Mouette,<br>
+        la mascotte officielle ✦
+      </div>
+      <!-- Different mascotte pose - waving -->
+      <svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Feet -->
+        <line x1="148" y1="352" x2="142" y2="376" stroke="#FF8B4A" stroke-width="6" stroke-linecap="round"/>
+        <line x1="212" y1="352" x2="218" y2="376" stroke="#FF8B4A" stroke-width="6" stroke-linecap="round"/>
+        <!-- Body -->
+        <ellipse cx="180" cy="240" rx="88" ry="105" fill="#FFFFFF" stroke="#14181C" stroke-width="4"/>
+        <!-- Left wing (down) -->
+        <path d="M 96 220 Q 60 200 70 165 Q 84 195 100 270 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="4"/>
+        <!-- Right wing waving -->
+        <path d="M 260 200 Q 320 150 320 90 Q 290 130 268 180 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="4"/>
+        <!-- Marinière -->
+        <path d="M 116 195 Q 180 212 244 195 Q 242 216 228 220 Q 180 230 132 220 Q 118 216 116 195 Z" fill="#0A2438" stroke="#14181C" stroke-width="3"/>
+        <line x1="135" y1="198" x2="135" y2="220" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="158" y1="200" x2="158" y2="224" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="180" y1="202" x2="180" y2="226" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="202" y1="200" x2="202" y2="224" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="225" y1="198" x2="225" y2="220" stroke="#FFFFFF" stroke-width="3"/>
+        <!-- Head -->
+        <circle cx="180" cy="125" r="80" fill="#FFFFFF" stroke="#14181C" stroke-width="4"/>
+        <!-- Hair -->
+        <path d="M 152 58 Q 158 42 168 50 Q 175 40 180 50 Q 185 40 192 50 Q 202 42 208 58 Q 188 66 180 64 Q 172 66 152 58 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="3"/>
+        <!-- Wink left, eye open right -->
+        <path d="M 145 120 Q 152 116 159 120" stroke="#14181C" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="208" cy="120" r="13" fill="#14181C"/>
+        <circle cx="212" cy="115" r="4" fill="#FFFFFF"/>
+        <!-- Beak -->
+        <path d="M 170 144 L 190 144 L 180 162 Z" fill="#FF8B4A" stroke="#14181C" stroke-width="3"/>
+        <!-- Open smile -->
+        <path d="M 158 172 Q 180 188 202 172" stroke="#14181C" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Cheeks -->
+        <ellipse cx="128" cy="155" rx="11" ry="7" fill="#FF6B9D" opacity="0.6"/>
+        <ellipse cx="232" cy="155" rx="11" ry="7" fill="#FF6B9D" opacity="0.6"/>
+        <!-- Sparkles around -->
+        <text x="50" y="100" fill="#FFC940" font-size="22" font-weight="bold">✦</text>
+        <text x="310" y="80" fill="#FF6B9D" font-size="18" font-weight="bold">★</text>
+        <text x="40" y="280" fill="#FFC940" font-size="16" font-weight="bold">✦</text>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- WINDOW / LOCATION -->
+<section class="window-section" id="window">
+  <div class="window-grid">
+
+    <div class="window-photo-pop">
+      <span class="corner-badge">★ Quai K18, Morgat</span>
+      <span class="photo-sticker">↓ c'est par là ↓</span>
+    </div>
+
+    <div class="window-info-pop">
+      <span class="kicker">★ Une seule adresse ★</span>
+      <h3>À la <span class="pink">fenêtre</span>, face à la plage.</h3>
+      <p class="addr">Quai K18, Port de Morgat<br>29160 Crozon, Bretagne</p>
+
+      <div class="lines">
+        <div class="line">
+          <div class="ico yellow">✦</div>
+          <div class="text">
+            <strong>Saison</strong>
+            14 mai → 30 septembre 2026
+          </div>
+        </div>
+        <div class="line">
+          <div class="ico">✦</div>
+          <div class="text">
+            <strong>Horaires</strong>
+            14h — 22h, tous les jours
+          </div>
+        </div>
+        <div class="line">
+          <div class="ico mint">✦</div>
+          <div class="text">
+            <strong>Accès</strong>
+            Petit immeuble bleu canard, par le couloir
+          </div>
+        </div>
+      </div>
+
+      <div class="ctas">
+        <a href="https://maps.google.com" target="_blank" class="btn primary">Y aller →</a>
+        <a href="tel:+33298" class="btn dark">Appeler</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOCIAL / QUOTES -->
+<section class="social-pop">
+  <div class="social-pop-head">
+    <span class="kicker">★ Ce qu'on dit de nous ★</span>
+    <h2>On <span style="color: var(--pink-deep)">papote</span>.</h2>
+  </div>
+
+  <div class="quotes-grid">
+
+    <div class="quote-bubble">
+      <div class="stars">★★★★★</div>
+      <p class="text">"Honnêtement, <em>la meilleure pistache</em> que j'ai mangée de toute ma vie. Et je suis italien."</p>
+      <div class="source">
+        <div class="avatar pink">M</div>
+        <div class="name">
+          Marco D.
+          <span>★ Vacancier · Juillet 25</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-bubble">
+      <div class="stars">★★★★★</div>
+      <p class="text">"Ma fille refuse de partir de Crozon tant qu'elle <em>n'a pas vu Mouette</em>. Aidez-moi."</p>
+      <div class="source">
+        <div class="avatar">S</div>
+        <div class="name">
+          Sophie L.
+          <span>★ Locale · Août 25</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-bubble">
+      <div class="stars">★★★★★</div>
+      <p class="text">"On a fait Crozon — Brest — retour Crozon <em>juste pour la fraise de Plougastel</em>. Aucun regret."</p>
+      <div class="source">
+        <div class="avatar lilac">P</div>
+        <div class="name">
+          Paul T.
+          <span>★ Touriste · Juin 25</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-pop">
+  <div class="newsletter-pop-inner">
+    <span class="kicker">★ La carte postale de Mouette ★</span>
+    <h2>De la <span style="color: var(--pink-deep);">glace</span>,<br>dans ta boîte mail.</h2>
+    <p>Une carte postale par mois, juste pour annoncer la nouvelle série. <strong>Mouette écrit, on signe.</strong></p>
+    <form>
+      <input type="email" placeholder="ton e-mail">
+      <button type="submit">→ envoie</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <!-- Decorative mascotte at corner -->
+  <svg class="footer-mascot" viewBox="0 0 360 460" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="180" cy="290" rx="100" ry="120" fill="#FFFFFF" stroke="#14181C" stroke-width="4"/>
+    <path d="M 88 270 Q 50 250 62 210 Q 78 240 92 320 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="4"/>
+    <path d="M 272 270 Q 310 250 298 210 Q 282 240 268 320 Z" fill="#C5CDD5" stroke="#14181C" stroke-width="4"/>
+    <path d="M 110 230 Q 180 248 250 230 Q 248 252 230 258 Q 180 268 130 258 Q 112 252 110 230 Z" fill="#0A2438" stroke="#14181C" stroke-width="3"/>
+    <line x1="130" y1="232" x2="130" y2="258" stroke="#FFFFFF" stroke-width="3"/>
+    <line x1="155" y1="234" x2="155" y2="262" stroke="#FFFFFF" stroke-width="3"/>
+    <line x1="180" y1="236" x2="180" y2="264" stroke="#FFFFFF" stroke-width="3"/>
+    <line x1="205" y1="234" x2="205" y2="262" stroke="#FFFFFF" stroke-width="3"/>
+    <line x1="230" y1="232" x2="230" y2="258" stroke="#FFFFFF" stroke-width="3"/>
+    <circle cx="180" cy="138" r="92" fill="#FFFFFF" stroke="#14181C" stroke-width="4"/>
+    <circle cx="148" cy="130" r="14" fill="#14181C"/>
+    <circle cx="212" cy="130" r="14" fill="#14181C"/>
+    <circle cx="153" cy="124" r="5" fill="#FFFFFF"/>
+    <circle cx="217" cy="124" r="5" fill="#FFFFFF"/>
+    <path d="M 168 158 L 192 158 L 180 178 Z" fill="#FF8B4A" stroke="#14181C" stroke-width="3"/>
+    <path d="M 162 192 Q 180 200 198 192" stroke="#14181C" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="124" cy="170" rx="12" ry="8" fill="#FF6B9D" opacity="0.5"/>
+    <ellipse cx="236" cy="170" rx="12" ry="8" fill="#FF6B9D" opacity="0.5"/>
+  </svg>
+
+  <div class="footer-grid">
+    <div class="brand">
+      <div class="display">La<span class="pink"> Fenêtre</span></div>
+      <p>Glacier artisanal saisonnier. Quai K18, Port de Morgat, 29160 Crozon, Bretagne. 8 parfums signés Meilleur Ouvrier de France.</p>
+      <span class="signature">— Coucou, c'est Mouette ✦</span>
+    </div>
+    <div>
+      <h5>Découvrir</h5>
+      <ul>
+        <li><a href="#parfums">Nos 8 parfums</a></li>
+        <li><a href="#series">La série du mois</a></li>
+        <li><a href="#about">Notre histoire</a></li>
+        <li><a href="#window">Notre fenêtre</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Suivre</h5>
+      <ul>
+        <li><a href="https://instagram.com" target="_blank">Instagram ↗</a></li>
+        <li><a href="https://tiktok.com" target="_blank">TikTok ↗</a></li>
+        <li><a href="#">Newsletter ★</a></li>
+        <li><a href="mailto:contact@lafenetre.fr">Nous écrire</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 La Fenêtre · Coucou Crozon</span>
+    <span>Mentions légales · CGV</span>
+  </div>
+</footer>
+
+</body>
+</html>
