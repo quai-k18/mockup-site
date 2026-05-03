@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Fenêtre — Choix du style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+SC:wght@500&family=Spectral:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F2E8;
+    --ink: #1A1714;
+    --ink-soft: #6B6056;
+    --teal: #0E4F58;
+    --hairline: #D9D2BE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Spectral', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  header {
+    text-align: center;
+    padding: 72px 24px 56px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .eyebrow {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(38px, 6vw, 62px);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    gap: 32px;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s, transform 0.25s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 32px rgba(14, 79, 88, 0.10);
+    transform: translateY(-3px);
+  }
+
+  .card-preview {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* Style 1 — Éditorial chaleureux */
+  .preview-1 {
+    background: #F7F2E8;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .preview-1 .p-logo {
+    font-style: italic;
+    font-size: 36px;
+    color: #1A1714;
+  }
+  .preview-1 .p-tag {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: #0E4F58;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 24px;
+    left: 0; right: 0;
+    text-align: center;
+  }
+  .preview-1::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #F2EBDD 0%, #F7F2E8 60%, #E8B5B5 100%);
+    opacity: 0.5;
+  }
+
+  /* Style 2 — Carte postale vintage */
+  .preview-2 {
+    background: #F4E9D4;
+  }
+  .preview-2 .p-stamp {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 42px; height: 52px;
+    border: 2px solid #B53D3D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: #B53D3D;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .preview-2 .p-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 38px;
+    color: #1B3A52;
+    z-index: 1;
+  }
+  .preview-2 .p-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #A8C5D0, #D8755C, #A8C5D0);
+    opacity: 0.7;
+  }
+  .preview-2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at top left, rgba(217,197,160,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom right, rgba(168,197,208,0.3) 0%, transparent 60%);
+  }
+
+  /* Style 3 — Moderne audacieux */
+  .preview-3 {
+    background: #F8EFD9;
+  }
+  .preview-3 .p-logo {
+    font-family: 'Spectral', serif;
+    font-size: 32px;
+    color: #1F1B16;
+    letter-spacing: -0.01em;
+    z-index: 1;
+  }
+  .preview-3 .p-neon {
+    position: absolute;
+    bottom: 22px;
+    font-size: 13px;
+    font-family: cursive;
+    color: #FF3B81;
+    text-shadow: 0 0 8px rgba(255,59,129,0.6), 0 0 20px rgba(255,59,129,0.3);
+    z-index: 1;
+  }
+  .preview-3::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #F8EFD9 40%, #F5C6D2 100%);
+    opacity: 0.6;
+  }
+
+  /* Style 4 — Minimalisme luxe */
+  .preview-4 {
+    background: #FAF8F4;
+  }
+  .preview-4 .p-logo {
+    font-family: 'Spectral', serif;
+    font-size: 18px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #1A1A1A;
+    z-index: 1;
+  }
+  .preview-4 .p-rule {
+    position: absolute;
+    bottom: 40px;
+    width: 40px;
+    height: 1px;
+    background: #0E4F58;
+  }
+  .preview-4::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom right, #FAF8F4 60%, #EDE6D9 100%);
+  }
+
+  .card-body {
+    padding: 28px 32px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .style-number {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .card-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 2px;
+    align-self: flex-start;
+    transition: opacity 0.2s;
+  }
+
+  .card-cta:hover { opacity: 0.65; }
+
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--hairline);
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 520px) {
+    main {
+      grid-template-columns: 1fr;
+      padding: 40px 16px 64px;
+    }
+    header { padding: 52px 20px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">La Fenêtre · Port de Morgat, Crozon</p>
+  <h1>Choisir un style</h1>
+  <p class="subtitle">Quatre propositions visuelles pour votre site web. Cliquez sur chaque style pour le découvrir en détail.</p>
+</header>
+
+<main>
+
+  <a class="card" href="index-style1-v2.html">
+    <div class="card-preview preview-1">
+      <span class="p-logo">La Fenêtre</span>
+      <span class="p-tag">Glacier artisanal · Morgat</span>
+    </div>
+    <div class="card-body">
+      <p class="style-number">Style 1</p>
+      <h2 class="card-title">Éditorial chaleureux</h2>
+      <p class="card-desc">Typographie serif classique, tons crème et encre. Une esthétique de presse de qualité, intemporelle et raffinée.</p>
+      <span class="card-cta">Voir ce style →</span>
+    </div>
+  </a>
+
+  <a class="card" href="index-style2-v2.html">
+    <div class="card-preview preview-2">
+      <span class="p-logo">La Fenêtre</span>
+      <div class="p-stamp">Été<br>2026</div>
+      <div class="p-line"></div>
+    </div>
+    <div class="card-body">
+      <p class="style-number">Style 2</p>
+      <h2 class="card-title">Carte postale vintage</h2>
+      <p class="card-desc">Inspiration estivale et nostalgique. Papier ancien, touches de corail et de bleu mer, ambiance bord de plage.</p>
+      <span class="card-cta">Voir ce style →</span>
+    </div>
+  </a>
+
+  <a class="card" href="index-style3-v2.html">
+    <div class="card-preview preview-3">
+      <span class="p-logo">La Fenêtre</span>
+      <span class="p-neon">glacier artisanal ✦</span>
+    </div>
+    <div class="card-body">
+      <p class="style-number">Style 3</p>
+      <h2 class="card-title">Moderne &amp; audacieux</h2>
+      <p class="card-desc">Graphisme contemporain, typographie large, accents néon rose. Dynamique, jeune, mémorable.</p>
+      <span class="card-cta">Voir ce style →</span>
+    </div>
+  </a>
+
+  <a class="card" href="index-style4.html">
+    <div class="card-preview preview-4">
+      <span class="p-logo">La Fenêtre</span>
+      <div class="p-rule"></div>
+    </div>
+    <div class="card-body">
+      <p class="style-number">Style 4</p>
+      <h2 class="card-title">Minimalisme luxe</h2>
+      <p class="card-desc">Épuré, aéré, silencieux. Grands espaces blancs, typographie fine, palette os et teal. L'élégance dans la retenue.</p>
+      <span class="card-cta">Voir ce style →</span>
+    </div>
+  </a>
+
+</main>
+
+<footer>
+  La Fenêtre · Glacier artisanal · Port de Morgat, Crozon
+</footer>
+
+</body>
+</html>
