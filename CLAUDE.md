@@ -27,6 +27,10 @@ All four files share the same brand anchors:
 - Language: French throughout
 - Section structure: nav → hero → flavors/menu → about → visit/contact
 
+## Deployment & index.html
+
+The site is deployed via GitHub Pages. `index.html` is a style-picker landing page shared directly with non-technical stakeholders so they can choose a visual direction. Keep it clear and self-explanatory — no jargon, no instructions required. Stakeholders access it via a public URL; they do not clone the repo.
+
 ## Conventions
 
 - CSS custom properties (`--var`) define the palette at `:root`; edit colors there, not inline
